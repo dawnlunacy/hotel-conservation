@@ -82,4 +82,40 @@ describe('Hotel', () => {
       });
     });
   });
+
+  describe('findCustomerBookingsInfoById', () => {
+    it('should find the customers bookings and room service orders', () => {
+      expect(hotel.findCustomerBookingsInfoById(5)).to.eql([
+        {
+          userID: 5,
+          date: "2019/09/26",
+          roomNumber: 26
+        },
+        {
+          userID: 5,
+          date: "2019/08/02",
+          roomNumber: 9
+        }
+      ])
+    })
+  })
+
+  describe('findCustomerRoomServiceOrdersInfoById', () => {
+    it('should find the customers room service orders', () => {
+      expect(hotel.findCustomerRoomServiceOrdersInfoById(5)).to.eql([
+        {
+          userID: 5,
+          date: "2019/09/26",
+          food: "Fantastic Cotton Sandwich",
+          totalCost: 17.61
+        },
+        {
+          userID: 5,
+          date: "2019/08/02",
+          food: "Tasty Granite Sandwich",
+          totalCost: 20.84
+        }
+      ])
+    })
+  })
 });

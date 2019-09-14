@@ -27,6 +27,16 @@ class Hotel {
     let currentUser = this.customers.find(customer => customer.id === id);
     return currentUser;
   }
+
+  findCustomerBookingsInfoById(id) {
+    let currentUserBookingInfo = this.bookings.filter(booking => booking.userID === id);
+    return currentUserBookingInfo;
+  }
+
+  findCustomerRoomServiceOrdersInfoById(id) {
+      let currentUserRoomServiceOrders = this.roomServiceOrders.filter(order => order.userID === id);
+      return currentUserRoomServiceOrders;
+  }
 }
 
 module.exports = Hotel;
