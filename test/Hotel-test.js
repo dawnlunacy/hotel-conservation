@@ -118,4 +118,17 @@ describe('Hotel', () => {
       ])
     })
   })
+
+  describe('instantiateCustomersHelper', () => {
+      it('should find the customers bookings and orders', () => {
+        chai.spy.on(hotel,['findCustomerBookingsInfoById', 'findCustomerRoomServiceOrdersInfoById'], () => {});
+        hotel.instantiateCustomersHelper();
+        expect(hotel.findCustomerBookingsInfoById).to.have.been.called(users.length());
+      })
+    })
+  })
+
+
+
+
 });
