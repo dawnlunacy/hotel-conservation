@@ -1,5 +1,7 @@
 /* This is an example of using Sass, otherwise plain CSS works too*/
 @import 'normalize';
+@import 'variables';
+
 
 $primary-background: pink;
 $primary: #fffef6;
@@ -28,10 +30,12 @@ header {
   width: 100px;
   height: 100px;
   display: inline-block;
-  // margin: 5px;
+  padding: 8px;
 }
+
 h2 {
   margin: 0;
+  padding: 8px;
 }
 
 h4 {
