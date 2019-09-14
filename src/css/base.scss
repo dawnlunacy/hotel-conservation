@@ -1,6 +1,78 @@
 /* This is an example of using Sass, otherwise plain CSS works too*/
+@import 'normalize';
+
 $primary-background: pink;
+$primary: #fffef6;
+* {
+  box-sizing: border-box;
+}
 
 body {
-  background-color: $primary-background;
+  background-color: $primary;
+  background: #fafafa;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #333;
 }
+
+header {
+  display: flex;
+  justify-content: space-between;
+  min-height: 20vh;
+  background-color: $primary;
+  font-size: 1.5em;
+  padding: 5px;;
+}
+
+.logo {
+  width: 100px;
+  height: 100px;
+  display: inline-block;
+  // margin: 5px;
+}
+h2 {
+  margin: 0;
+}
+
+h4 {
+  padding: 8px;
+  word-wrap: initial;
+  width: 10%;
+}
+.tab-labels {
+  overflow: hidden;
+  border: 2px solid green;
+  background-color: limegreen;
+}
+
+.tabs {
+  // float: right;
+  background-color: yellow;
+  display: flex;
+  justify-content: center;
+
+
+}
+
+.tabs li {
+  list-style-type: none;
+  display: inline-block;
+  background: hsl(220, 31%, 33%);
+  margin: 5px;
+  padding: 5px 10px;
+  border-radius: 10px 10px 0 0; 
+  color: whitesmoke;
+  font-size: 2em;
+  cursor: pointer;
+}
+
+main {
+  width: 100vw;
+  height: 70vh;
+}
+
+footer {
+  min-height: 10vh;
+  display: block;
+  background: turquoise;
+}
+
