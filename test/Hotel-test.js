@@ -73,4 +73,13 @@ describe('Hotel', () => {
       });
     });
   });
+
+  describe('findCustomerById', () => {
+    it('should return the specific customer being search for', () => {
+      expect(hotel.findCustomerById(11)).to.eql({
+        id: 11,
+        name: "Amiya Effertz"
+      });
+    });
+  });
 });
