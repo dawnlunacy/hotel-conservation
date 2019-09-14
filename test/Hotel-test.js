@@ -1,5 +1,6 @@
 import mockData from '../mock-data/mockData';
 import Hotel from '../src/Hotel';
+// import Customer from '../src/Customer';
 import chai from 'chai';
 const expect = chai.expect;
 const users = mockData.users;
@@ -11,7 +12,7 @@ let hotel;
 
 describe('Hotel', () => {
   beforeEach(() => {
-    hotel = new Hotel(users, bookings, roomServiceOrders, rooms)
+    hotel = new Hotel(users, rooms, bookings, roomServiceOrders)
   });
 
   it('should be a function', () => {
@@ -63,5 +64,4 @@ describe('Hotel', () => {
       expect(hotel.findTodaysDate()).to.equal('2019/09/14')
     });
   });
-
- 
+});

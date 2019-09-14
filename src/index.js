@@ -13,25 +13,6 @@ import './images/plant.svg'
 
 let hotel;
 
-
-// let usersAPICall = fetch("https://fe-apps.herokuapp.com/api/v1/overlook/1904/users/users");
-// let roomsAPICall = fetch("https://fe-apps.herokuapp.com/api/v1/overlook/1904/rooms/rooms");
-// let bookingsAPICall = fetch("https://fe-apps.herokuapp.com/api/v1/overlook/1904/bookings/bookings");
-// let roomServicesAPICall = fetch("https://fe-apps.herokuapp.com/api/v1/overlook/1904/room-services/roomServices");
-
-
-// Promise.all([usersAPICall, roomsAPICall, bookingsAPICall, roomServicesAPICall])
-//   .then(values => Promise.all(values.map(value => value.json())))
-//   .then(finalVals => {
-//     let usersAPIResp = finalVals[0].users;
-//     let roomsAPIResp = finalVals[1].rooms;
-//     let bookingsAPIResp = finalVals[2].bookings;
-//     let roomServicesAPIResp = finalVals[3].roomServices; 
-//     instantiateHotel(usersAPIResp, bookingsAPIResp, roomServicesAPIResp, roomsAPIResp)
-//   });
-// .catch(error => console.log(error));
-
-
 console.log('This is the JavaScript entry file - your code begins here.');
 
 
