@@ -18,9 +18,10 @@ header {
   display: flex;
   justify-content: space-between;
   min-height: 20vh;
-  background-color: $primary;
+  background-color: hsl(220, 31%, 33%);
   font-size: 1.5em;
-  padding: 5px;;
+  padding: 5px;
+  color: white;
 }
 
 .logo {
@@ -41,16 +42,16 @@ h4 {
 .tab-labels {
   overflow: hidden;
   border: 2px solid green;
-  background-color: limegreen;
+  // background-color: limegreen;
+  display: flex;
+  justify-content: space-between;
 }
 
 .tabs {
   // float: right;
-  background-color: yellow;
-  display: flex;
-  justify-content: center;
-
-
+  // background-color: yellow;
+  // display: flex;
+  // justify-content: end;
 }
 
 .tabs li {
@@ -63,6 +64,17 @@ h4 {
   color: whitesmoke;
   font-size: 2em;
   cursor: pointer;
+}
+
+.search-by-date {
+  display:flex;
+  align-content: center;
+  margin: 20px;
+    label {
+      font-size: 1.3em;
+      margin: 5px;
+    }
+
 }
 
 main {
