@@ -14,4 +14,26 @@ import './images/plant.svg'
 console.log('This is the JavaScript entry file - your code begins here.');
 
 
+$(function() {
+  $('.tab-labels .tabs li').on('click', function() {
+    let $tabLabel = $(this).closest('.tab-labels');
+
+
+    $tabLabel.find('.tabs li.active').removeClass('active');
+    $(this).addClass('active');
+
+    let $tabToShow = $(this).attr('rel');
+
+    $tabLabel.find('.tabLabel-active').slideToggle(200, showCurrentTab);
+
+    function showCurrentTab() {
+      $(this).removeClass('active');
+
+      $('#' + $tabToShow).slideDown(200, function() {
+        $(this).addClass('active');
+      });
+    }
+
+  })
+});
 

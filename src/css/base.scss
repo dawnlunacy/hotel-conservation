@@ -64,6 +64,14 @@ h4 {
   color: whitesmoke;
   font-size: 2em;
   cursor: pointer;
+    &:hover {
+      // background-color: hsla(150, 68%, 65%, 0.876)
+      background-color: hsl(136, 48%, 53%)
+    }
+}
+
+.tabs li.active {
+  background-color: hsl(136, 48%, 53%);
 }
 
 .search-by-date {
@@ -74,7 +82,6 @@ h4 {
       font-size: 1.3em;
       margin: 5px;
     }
-
 }
 
 main {
