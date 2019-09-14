@@ -64,4 +64,13 @@ describe('Hotel', () => {
       expect(hotel.findTodaysDate()).to.equal('2019/09/14')
     });
   });
+
+  describe('findCustomerByName', () => {
+    it('should return the specific customer being search for', () => {
+      expect(hotel.findCustomerByName("Noemy Little")).to.eql({
+        id: 5,
+        name: "Noemy Little"
+      });
+    });
+  });
 });

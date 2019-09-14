@@ -5,7 +5,7 @@ class Hotel {
     this.bookings = bookings;
     this.roomServiceOrders = roomServiceOrders;
     this.todaysDate;
-
+    this.currentCustomer;
   }
 
   findTodaysDate() {
@@ -17,6 +17,13 @@ class Hotel {
     this.todaysDate = todayFormat
     return this.todaysDate
   }
+
+  findCustomerByName(name) {
+    let currentUser = this.customers.find(customer => customer.name === name)
+    return currentUser;
+ }
+
+ 
 }
 
 module.exports = Hotel;
