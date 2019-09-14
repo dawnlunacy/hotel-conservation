@@ -18,18 +18,31 @@ $(function() {
   $('.tab-labels .tabs li').on('click', function() {
     let $tabLabel = $(this).closest('.tab-labels');
 
+  
+    console.log("tabby", $tabLabel.find('.tabs li.active').attr('rel'))
+    let $tabToHideId = '#' + $tabLabel.find('.tabs li.active').attr('rel') + '-default'
+    console.log("tabbyTOHIDE", $tabToHideId)
+     $($tabToHideId).hide() 
+
 
     $tabLabel.find('.tabs li.active').removeClass('active');
     $(this).addClass('active');
 
+    
+
     let $tabToShow = $(this).attr('rel');
 
-    $tabLabel.find('.tabLabel-active').slideToggle(200, showCurrentTab);
+    $tabLabel.find('.tabLabel-active').slideToggle(200, showCurrentTab());
 
     function showCurrentTab() {
       $(this).removeClass('active');
+      console.log("THIS", $(this))
+      
+          
 
-      $('#' + $tabToShow).slideDown(200, function() {
+        let $tabToShowId = '#' + $tabToShow + '-default'
+        console.log("YO", $tabToShowId)
+      $($tabToShowId).slideDown(200, function() {
         $(this).addClass('active');
       });
     }
