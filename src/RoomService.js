@@ -1,4 +1,4 @@
-class RoomServiceOrder {
+class RoomService {
   constructor(id, date, order, cost ) {
     this.userID = id;
     this.date = date;
@@ -7,5 +7,5 @@ class RoomServiceOrder {
   }
 }
   
-export default RoomServiceOrder;
+export default RoomService;
   

@@ -1,4 +1,8 @@
-import Customer from './Customer'
+import Customer from './Customer';
+import Room from './Room';
+import Booking from './Booking';
+import RoomService from './RoomService';
+
 
 
 class Hotel {
@@ -12,8 +16,10 @@ class Hotel {
   }
 
   hotelHelper() {
-      this.instantiateCustomersHelper();
-
+    this.instantiateCustomersHelper();
+    this.instantiateRooms();
+    this.instantiateBookings();
+    this.instantiateRoomService();
   }
 
   findTodaysDate() {
@@ -65,7 +71,24 @@ class Hotel {
   }
 
   instantiateBookings() {
-      
+    let freshBookings = this.bookings.map(booking => {
+      return booking = new Booking(booking.userID, booking.date, booking.roomNumber)
+    })
+    this.bookings = freshBookings;
+  }
+
+  instantiateRoomService() {
+    let freshRoomService = this.roomServiceOrders.map(roomServiceOrder => {
+      return roomServiceOrder = new RoomService(roomServiceOrder.userID, roomServiceOrder.date, roomServiceOrder.food, roomServiceOrder.totalCost)
+    })
+    this.roomServiceOrders = freshRoomService;
+  }
+
+  instantiateRooms() {
+    this.freshRooms = this.rooms.map(room => {
+      return room = new Room(room.number, room.roomType, room.bidet, room.bedSize, room.numBeds, room.costPerNight)
+    })
+    this.rooms = this.freshRooms
   }
 
 

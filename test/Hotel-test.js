@@ -3,7 +3,7 @@ import Hotel from '../src/Hotel';
 import Customer from '../src/Customer';
 import Room from '../src/Room';
 import Booking from '../src/Booking';
-import RoomServiceOrder from '../src/RoomServiceOrder';
+import RoomService from '../src/RoomService';
 import chai from 'chai';
 import spies from 'chai-spies';
 const expect = chai.expect;
@@ -18,7 +18,7 @@ let hotel;
 describe('Hotel', () => {
   beforeEach(() => {
     hotel = new Hotel(users, rooms, bookings, roomServiceOrders)
-    hotel.instantiateCustomersHelper();
+    hotel.hotelHelper();
   });
 
   it('should be a function', () => {
@@ -183,7 +183,7 @@ describe('Hotel', () => {
 
   describe('instantiateRoomServiceOrders', () => {
     it('should create all booking info as an actual instance of booking', () => {
-      expect(hotel.roomServiceOrders[1]).to.be.an.instanceOf(RoomServiceOrder);
+      expect(hotel.roomServiceOrders[1]).to.be.an.instanceOf(RoomService);
     })
   })
 
