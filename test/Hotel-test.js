@@ -1,6 +1,9 @@
 import mockData from '../mock-data/mockData';
 import Hotel from '../src/Hotel';
 import Customer from '../src/Customer';
+import Room from '../src/Room';
+import Booking from '../src/Booking';
+import RoomServiceOrder from '../src/RoomServiceOrder';
 import chai from 'chai';
 import spies from 'chai-spies';
 const expect = chai.expect;
@@ -163,8 +166,30 @@ describe('Hotel', () => {
       hotel.createCustomer("Lacy Dawn")
       let index = hotel.customers.length - 1;
       expect(hotel.customers[index].id).to.eql(hotel.customers.length)
-      
+    })
+  })
 
+  describe('instantiateRooms', () => {
+    it('should create all room info as an actual instance of room', () => {
+      expect(hotel.rooms[1]).to.be.an.instanceOf(Room);
+    })
+  })
+
+  describe('instantiateBookings', () => {
+    it('should create all booking info as an actual instance of booking', () => {
+      expect(hotel.bookings[1]).to.be.an.instanceOf(Booking);
+    })
+  })
+
+  describe('instantiateRoomServiceOrders', () => {
+    it('should create all booking info as an actual instance of booking', () => {
+      expect(hotel.roomServiceOrders[1]).to.be.an.instanceOf(RoomServiceOrder);
+    })
+  })
+
+  describe('instantiateBookings', () => {
+    it('should create all booking info as an actual instance of booking', () => {
+      expect(hotel.bookings[1]).to.be.an.instanceOf(Booking);
     })
   })
 

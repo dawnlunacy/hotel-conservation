@@ -11,6 +11,11 @@ class Hotel {
     this.currentCustomer;
   }
 
+  hotelHelper() {
+      this.instantiateCustomersHelper();
+
+  }
+
   findTodaysDate() {
     let today = new Date();
     let dd = String(today.getDate()).padStart(2, '0');
@@ -57,6 +62,10 @@ class Hotel {
     this.currentCustomer = customer;
     this.customers.push(customer);
     return customer
+  }
+
+  instantiateBookings() {
+      
   }
 
 
