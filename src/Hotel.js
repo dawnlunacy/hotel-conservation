@@ -1,3 +1,6 @@
+import Customer from './Customer'
+
+
 class Hotel {
   constructor(users, rooms, bookings, roomServiceOrders) {
     this.customers = users;
@@ -18,13 +21,7 @@ class Hotel {
     return this.todaysDate;
   }
 
-  instantiateCustomersHelper() {
-      this.customers = this.customers.map(customer => {
-          let bookings = this.findCustomerBookingsInfoById(customer.id);
-          let roomServiceOrders = this.findCustomerRoomServiceOrdersInfoById(customer.id);
-          return new Customer(customer.id, customer.name, bookings, roomServiceOrders)
-      })
-  }
+  
   findCustomerByName(name) {
     let currentUser = this.customers.find(customer => customer.name === name);
     return currentUser;
@@ -45,7 +42,18 @@ class Hotel {
     return currentUserRoomServiceOrders;
   }
 
+  instantiateCustomersHelper() {
+    
+    this.customers = this.customers.map(customer => {
+      let bookings = this.findCustomerBookingsInfoById(customer.id);
+      let roomServiceOrders = this.findCustomerRoomServiceOrdersInfoById(customer.id);
+      return new Customer(customer.id, customer.name, bookings, roomServiceOrders)
+    })
+
+    return this.customers;
+  }
+
 
 }
 
-module.exports = Hotel;
+export default Hotel

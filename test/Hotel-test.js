@@ -2,7 +2,9 @@ import mockData from '../mock-data/mockData';
 import Hotel from '../src/Hotel';
 // import Customer from '../src/Customer';
 import chai from 'chai';
+import spies from 'chai-spies';
 const expect = chai.expect;
+chai.use(spies);
 const users = mockData.users;
 const rooms = mockData.rooms;
 const bookings = mockData.bookings;
@@ -13,6 +15,7 @@ let hotel;
 describe('Hotel', () => {
   beforeEach(() => {
     hotel = new Hotel(users, rooms, bookings, roomServiceOrders)
+    hotel.instantiateCustomersHelper();
   });
 
   it('should be a function', () => {
@@ -24,7 +27,7 @@ describe('Hotel', () => {
   });
 
   it('should hold the a list of customers', () => {
-    expect(hotel.customers).to.be.eql(users)
+    expect(hotel.customers.length).to.be.eql(users.length)
   });
 
   it('should store the customer list accurately by having the total number of customers correct', () => {
@@ -67,9 +70,25 @@ describe('Hotel', () => {
 
   describe('findCustomerByName', () => {
     it('should return the specific customer being search for', () => {
-      expect(hotel.findCustomerByName("Noemy Little")).to.eql({
-        id: 5,
-        name: "Noemy Little"
+      expect(hotel.findCustomerByName("Noemy Little")).to.eql({id: 5,
+        name: 'Noemy Little',
+        bookings: [
+          { userID: 5, date: '2019/09/26', roomNumber: 26 },
+          { userID: 5, date: '2019/08/02', roomNumber: 9 }
+        ],
+        roomServiceOrders: [
+          {
+            userID: 5,
+            date: '2019/09/26',
+            food: 'Fantastic Cotton Sandwich',
+            totalCost: 17.61
+          },
+          {
+            userID: 5,
+            date: '2019/08/02',
+            food: 'Tasty Granite Sandwich',
+            totalCost: 20.84
+          }]
       });
     });
   });
@@ -78,8 +97,16 @@ describe('Hotel', () => {
     it('should return the specific customer being search for', () => {
       expect(hotel.findCustomerById(11)).to.eql({
         id: 11,
-        name: "Amiya Effertz"
-      });
+        name: 'Amiya Effertz',
+        bookings: [ { userID: 11, date: '2019/09/22', roomNumber: 23 } ],
+        roomServiceOrders: [
+          {
+            userID: 11,
+            date: '2019/10/22',
+            food: 'Unbranded Wooden Sandwich',
+            totalCost: 12.83
+          }
+        ]});
     });
   });
 
@@ -120,15 +147,11 @@ describe('Hotel', () => {
   })
 
   describe('instantiateCustomersHelper', () => {
-      it('should find the customers bookings and orders', () => {
-        chai.spy.on(hotel,['findCustomerBookingsInfoById', 'findCustomerRoomServiceOrdersInfoById'], () => {});
-        hotel.instantiateCustomersHelper();
-        expect(hotel.findCustomerBookingsInfoById).to.have.been.called(users.length());
-      })
+    it('should find the customers bookings and orders', () => {
+      chai.spy.on(hotel, ['findCustomerBookingsInfoById', 'findCustomerRoomServiceOrdersInfoById'], () => {});
+      hotel.instantiateCustomersHelper();
+      expect(hotel.findCustomerBookingsInfoById).to.have.been.called(30);
+      expect(hotel.findCustomerRoomServiceOrdersInfoById).to.have.been.called(30);
     })
   })
-
-
-
-
-});
+})
