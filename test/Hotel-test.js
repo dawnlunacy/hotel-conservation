@@ -1,6 +1,6 @@
 import mockData from '../mock-data/mockData';
 import Hotel from '../src/Hotel';
-// import Customer from '../src/Customer';
+import Customer from '../src/Customer';
 import chai from 'chai';
 import spies from 'chai-spies';
 const expect = chai.expect;
@@ -64,7 +64,7 @@ describe('Hotel', () => {
 
   describe('findTodaysDate', () => {
     it('should return the current date on which the method was invoked', () => {
-      expect(hotel.findTodaysDate()).to.equal('2019/09/14')
+      expect(hotel.findTodaysDate()).to.equal('2019/09/15')
     });
   });
 
@@ -154,4 +154,20 @@ describe('Hotel', () => {
       expect(hotel.findCustomerRoomServiceOrdersInfoById).to.have.been.called(30);
     })
   })
+
+  describe('createCustomer', () => {
+    it('should be able to take in a new customer taking in only a name', () => {
+      expect(hotel.createCustomer("Lacy Dawn")).to.be.an.instanceOf(Customer)
+    })
+    it('should create a new id for the new customer', () => {
+      hotel.createCustomer("Lacy Dawn")
+      let index = hotel.customers.length - 1;
+      expect(hotel.customers[index].id).to.eql(hotel.customers.length)
+      
+
+    })
+  })
+
+
 })
+

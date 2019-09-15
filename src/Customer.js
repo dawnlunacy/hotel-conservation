@@ -1,7 +1,7 @@
 class Customer {
-  constructor(id, name, bookings, roomServiceOrders) {
+  constructor(name, id, bookings = [], roomServiceOrders = []) {
+    this.name = name;  
     this.id = id;
-    this.name = name;
     this.bookings = bookings;
     this.roomServiceOrders = roomServiceOrders;
   }

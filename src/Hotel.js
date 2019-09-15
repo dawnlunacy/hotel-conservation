@@ -43,14 +43,20 @@ class Hotel {
   }
 
   instantiateCustomersHelper() {
-    
     this.customers = this.customers.map(customer => {
       let bookings = this.findCustomerBookingsInfoById(customer.id);
       let roomServiceOrders = this.findCustomerRoomServiceOrdersInfoById(customer.id);
-      return new Customer(customer.id, customer.name, bookings, roomServiceOrders)
+      return new Customer(customer.name, customer.id, bookings, roomServiceOrders);
     })
-
     return this.customers;
+  }
+
+  createCustomer(name) {
+    let id = this.customers.length + 1;
+    let customer = new Customer(name, id);
+    this.currentCustomer = customer;
+    this.customers.push(customer);
+    return customer
   }
 
 
