@@ -29,9 +29,9 @@ Promise.all([usersAPICall, roomsAPICall, bookingsAPICall, roomServicesAPICall])
     let roomsAPIResp = finalVals[1].rooms;
     let bookingsAPIResp = finalVals[2].bookings;
     let roomServicesAPIResp = finalVals[3].roomServices; 
-    instantiateHotel(usersAPIResp, bookingsAPIResp, roomServicesAPIResp, roomsAPIResp)
-      .catch(error => console.log(error));
+    instantiateHotel(usersAPIResp, roomsAPIResp, bookingsAPIResp, roomServicesAPIResp)
   });
+//   .catch(error => console.log(error));
   
 
 
@@ -45,16 +45,11 @@ $(function() {
   $('.tab-labels .tabs li').on('click', function() {
     let $tabLabel = $(this).closest('.tab-labels');
 
-  
-    
     let $tabToHideId = '#' + $tabLabel.find('.tabs li.active').attr('rel') + '-default'
     $($tabToHideId).hide() 
 
-
     $tabLabel.find('.tabs li.active').removeClass('active');
     $(this).addClass('active');
-
-    
 
     let $tabToShow = $(this).attr('rel');
 
@@ -62,12 +57,8 @@ $(function() {
 
     function showCurrentTab() {
       $(this).removeClass('active');
-      console.log("THIS", $(this))
-      
-          
 
       let $tabToShowId = '#' + $tabToShow + '-default'
-      console.log("YO", $tabToShowId)
       $($tabToShowId).slideDown(200, function() {
         $(this).addClass('active');
       });

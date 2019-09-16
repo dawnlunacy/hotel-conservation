@@ -96,14 +96,26 @@ class Hotel {
   }
 
   findAvailableRoomsByDate(date = this.todaysDate) {
-    return this.bookings.filter(booking => booking.date !== date)
+    let todaysBookedRooms = this.findBookedRoomsByDate(date).length;
+    let numberOfRoomsAvailableToday = this.rooms.length - todaysBookedRooms;
+    return numberOfRoomsAvailableToday;
   }
 
   findRoomServiceOrdersByDate(date = this.todaysDate) {
     return this.roomServiceOrders.filter(order => order.date === date)
   }
 
-  
+  findPercentageOfRoomsOccupied(date = this.todaysDate) {
+    let totalRooms = this.rooms.length;
+    console.log("totalRooms", totalRooms)
+    let bookedRooms = this.findBookedRoomsByDate(date).length;
+    console.log("bookedRooms", bookedRooms)
+    let percentageOccupied = bookedRooms / totalRooms * 100;
+    console.log(parseFloat(percentageOccupied.toFixed(0)))
+    return parseFloat(percentageOccupied.toFixed(0))
+  }
+
+
 
 }
 

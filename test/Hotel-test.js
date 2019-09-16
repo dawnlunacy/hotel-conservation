@@ -211,7 +211,7 @@ describe('Hotel', () => {
 
   describe('findAvailableRoomsByDate', () => {
     it('should find all rooms available for today ie: all unbooked rooms', () => {
-      expect(hotel.findAvailableRoomsByDate("2019/09/30").length).to.equal(28)
+      expect(hotel.findAvailableRoomsByDate("2019/09/30")).to.equal(28)
     });
   });
 
@@ -231,6 +231,12 @@ describe('Hotel', () => {
           totalCost: 15.24
         }
         ])
+    });
+  });
+
+  describe('findPercentageOfRoomsOccupied', () => {
+    it('should calculate the percentage of rooms that are occupied for the date specified', () => {
+      expect(hotel.findPercentageOfRoomsOccupied("2019/09/30")).to.equal(7)
     });
   });
 
