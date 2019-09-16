@@ -41,11 +41,8 @@ class Hotel {
   }
 
   findCustomerById(id) {
-    console.log("id", id)
     let currentUser = this.customers.find(customer => customer.id === id);
-    console.log("**", currentUser)
     this.currentCustomer = currentUser;
-    console.log(this.currentCustomer)
     return currentUser;
   }
 
@@ -168,6 +165,28 @@ class Hotel {
       bookingsCounter: bookingTotalPossible })
     return leastPopularDates.date
   } 
+
+  findMostPopularBookingDate() {
+    let confirmedBookings = [...new Set(this.bookings.map(booking => booking.date))];
+    let mostpopularDates = confirmedBookings.reduce((finalObj, bookingDate) => {
+      let bookingCountToday = this.findBookedRoomsByDate(bookingDate).length;
+      if (bookingCountToday > finalObj.bookingsCounter ) {
+        finalObj.date.splice(0, finalObj.date.length, bookingDate)
+        finalObj.bookingsCounter = bookingCountToday
+      } else if (bookingCountToday === finalObj.bookingsCounter ) {
+        finalObj.date.splice(finalObj.date.length, 0, bookingDate)
+        finalObj.bookingsCounter = bookingCountToday
+      }
+      return finalObj
+    }, {date: [],
+      bookingsCounter: 0 })
+       
+    return mostpopularDates.date
+  }
+
+  
+
+  
 
     
 

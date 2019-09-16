@@ -99,3 +99,29 @@ footer {
   background: turquoise;
 }
 
+#orders-default {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding-top: 50px;
+}
+
+.orders-table {
+  border-collapse: collapse;
+  width: 80%;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  margin-left: 10%;
+  text-align: center;
+}
+
+td, th {
+  border: 1px solid black;
+  padding: 10px;
+   
+}
+
+th {
+  font-weight: bold;
+  text-transform: uppercase;
+  width: 200px;
+}

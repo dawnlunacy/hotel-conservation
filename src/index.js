@@ -28,19 +28,20 @@ Promise.all([usersAPICall, roomsAPICall, bookingsAPICall, roomServicesAPICall])
     let usersAPIResp = finalVals[0].users;
     let roomsAPIResp = finalVals[1].rooms;
     let bookingsAPIResp = finalVals[2].bookings;
-    let roomServicesAPIResp = finalVals[3].roomServices; 
+    let roomServicesAPIResp = finalVals[3].roomServices;
     instantiateHotel(usersAPIResp, roomsAPIResp, bookingsAPIResp, roomServicesAPIResp)
-  });
-//   .catch(error => console.log(error));
+  })
+  .catch(error => console.log(error));
+   
   
-
-
 function instantiateHotel(users, bookings, roomServices, rooms) {
   hotel = new Hotel(users, bookings, roomServices, rooms);
   hotel.hotelHelper();
   domUpdates.appendMainTabDefault(hotel);
   domUpdates.appendDropDownList(hotel);
   domUpdates.appendMostAvailableRoomsDate(hotel);
+  domUpdates.appendMostPopularDate(hotel);
+  domUpdates.loadOrderTable(hotel);
 }
 
 $(function() {

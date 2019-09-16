@@ -31,6 +31,15 @@ const domUpdates =  {
     $('.guide-display').text(name);
   },
 
+  appendMostPopularDate(hotel) {
+    let dateData = hotel.findMostPopularBookingDate()
+    if (dateData.length === 1) {
+      $('.most-popular-booking-date').text(dateData)
+    } else {
+      dateData.forEach(date => $('.most-popular-booking-date').append(`<li>${date}</li>`))  
+    }
+  },
+
   appendMostAvailableRoomsDate(hotel) {
     let dateData = hotel.findDateWithMostRoomsAvailable()
     if (dateData.length === 1) {
@@ -38,7 +47,21 @@ const domUpdates =  {
     } else {
       dateData.forEach(date => $('.greatest-availability-date').append(`<li>${date}</li>`))  
     }
-  }
+  },
+
+  loadOrderTable(hotel) {
+    let orderData = hotel.findRoomServiceOrdersByDate();
+    $('.todays-room-service-orders').text(orderData.length);
+    const orderTableBody = $('#table-order-data');
+    let dataHtml = '';
+    orderData.forEach((order) => {
+      dataHtml += `<tr><td>${order.userID}</td><td>${order.food}</td><td> $${order.totalCost}</td></tr>`
+    })
+    console.log("WHAT SHOULD BE IN TABLE", dataHtml)
+    orderTableBody.append(dataHtml)
+
+
+  },
 }
 
 export default domUpdates
