@@ -8,7 +8,8 @@
 
 
     <!-- Do not include the index.js or main.bundle.js file here - it is done automatically by the webpack server -->
-
+    <div id="page-container">
+      <div id="content-wrap">
     <header> 
     <div> <img src="./images/plant.svg" alt="Hotel Conservation Management System green leaves logo" class="logo">
       <h2> HCMS </h2> </div>
@@ -40,6 +41,21 @@
           <h3> Total Room Service Revenue: <span class="todays-room-service-revenue"></span></h3>
           <h3> Total Booking Revenue: <span class="todays-total-booking-revenue"></span></h3>
           <h3> Total Revenue: <span class="todays-total-revenue"></span></span></h3>
+          <div>
+              <h3> Tooday's Booking Details : <span class="todays-bookings-details"></span></span> Booked Rooms : </h3>
+          <table class="bookings-default-table">
+              <thead>
+                <tr>
+                  <th> Customer ID</th>
+                  <th> Customer Name</th>
+                  <th> Room Number</th>
+                  <th> Cost</th>
+                </tr>
+              </thead>
+              <tbody id="bookings-default-table-data">
+              </tbody>
+            </table> 
+          </div>
       </section>
       <section id="main-customer-selected" style="display:none"> </section>
       <section id="customers-default" style="display:none"> 
@@ -78,8 +94,9 @@
       </section>
       <section id="orders-customer-selected" style="display:none"></section>
       </main> 
-
+    </div>
 <footer> Thank you for using Hotel Conservation Management Systems 2019 </footer>
+</div>
   </body>
 </html>
  

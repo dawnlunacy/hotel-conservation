@@ -93,10 +93,11 @@ main {
   height: 70vh;
 }
 
-footer {
-  min-height: 10vh;
-  display: block;
-  background: turquoise;
+#main-default {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
 }
 
 #orders-default {
@@ -124,4 +125,21 @@ th {
   font-weight: bold;
   text-transform: uppercase;
   width: 200px;
+}
+
+#page-container {
+  position: relative;
+  min-height: 100vh;
+}
+
+#content-wrap {
+  padding-bottom: 50px;    
+}
+
+footer {
+  position: absolute;
+  width: 100%;
+  height: 50px;
+  background: turquoise;
+  margin-top: 90%;
 }

@@ -42,6 +42,7 @@ function instantiateHotel(users, bookings, roomServices, rooms) {
   domUpdates.appendMostAvailableRoomsDate(hotel);
   domUpdates.appendMostPopularDate(hotel);
   domUpdates.loadOrderTable(hotel);
+  domUpdates.loadBookingsTable(hotel);
 }
 
 $(function() {

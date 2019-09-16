@@ -57,11 +57,23 @@ const domUpdates =  {
     orderData.forEach((order) => {
       dataHtml += `<tr><td>${order.userID}</td><td>${order.food}</td><td> $${order.totalCost}</td></tr>`
     })
-    console.log("WHAT SHOULD BE IN TABLE", dataHtml)
     orderTableBody.append(dataHtml)
-
-
   },
+
+  loadBookingsTable(hotel) {
+    let bookingData = hotel.findBookedRoomsByDate();
+    $('.todays-bookings-details').text(bookingData.length);
+    const bookingTableBody = $('#bookings-default-table-data');
+    let dataHtml = '';
+    bookingData.forEach((booking) => {
+      let customer = hotel.findCustomerById(booking.userID)
+      console.log(booking.roomNumber)
+      let costOfRoom = hotel.findCostOfRoom(booking.roomNumber);
+      console.log(costOfRoom)
+      dataHtml += `<tr><td>${booking.userID}</td><td>${customer.name}</td><td> ${booking.roomNumber}</td><td> $${costOfRoom}</td>`
+    })
+    bookingTableBody.append(dataHtml);
+  }
 }
 
 export default domUpdates

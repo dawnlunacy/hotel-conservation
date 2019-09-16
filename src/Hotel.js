@@ -184,6 +184,10 @@ class Hotel {
     return mostpopularDates.date
   }
 
+  findCostOfRoom(roomNumber) {
+    return this.rooms.filter(room => room.number === roomNumber)[0].costPerNight;
+  }
+
   
 
   
