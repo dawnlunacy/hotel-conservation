@@ -240,5 +240,23 @@ describe('Hotel', () => {
     });
   });
 
+  describe('findBookingRevenueByDate', () => {
+    it('should return the total revenue of bookings for a specific date', () => {
+      expect(hotel.findBookingRevenueByDate("2019/09/30")).to.equal(572.48)
+    })
+  })
+
+  describe('findRoomServiceRevenueByDate', () => {
+    it('should return the total revenue of room service orders for a specific date', () => {
+      expect(hotel.findRoomServiceRevenueByDate("2019/09/30")).to.equal(33.74)
+    })
+  })
+
+  describe('findTotalRevenueByDate', () => {
+    it('should return the total revenue for a specific date', () => {
+      expect(hotel.findTotalRevenueByDate("2019/09/30")).to.equal(606.22)
+    })
+  })
+
 })
 

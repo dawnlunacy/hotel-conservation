@@ -107,13 +107,41 @@ class Hotel {
 
   findPercentageOfRoomsOccupied(date = this.todaysDate) {
     let totalRooms = this.rooms.length;
-    console.log("totalRooms", totalRooms)
     let bookedRooms = this.findBookedRoomsByDate(date).length;
-    console.log("bookedRooms", bookedRooms)
     let percentageOccupied = bookedRooms / totalRooms * 100;
-    console.log(parseFloat(percentageOccupied.toFixed(0)))
     return parseFloat(percentageOccupied.toFixed(0))
   }
+
+  findBookingRevenueByDate(date = this.todaysDate) {
+    let bookings = this.findBookedRoomsByDate(date);
+    let bookingRevenue = bookings.reduce((totalCost, booking) => {
+      let room = this.rooms.find(room => room.number === booking.roomNumber)
+      totalCost += room.costPerNight
+      return totalCost
+    }, 0)
+    return parseFloat(bookingRevenue.toFixed(2))
+  }
+
+  findRoomServiceRevenueByDate(date = this.todaysDate) {
+    let roomServiceOrders = this.findRoomServiceOrdersByDate(date);
+    let orderRevenue =  roomServiceOrders.reduce((totalServiceRevenue, order) => {
+      totalServiceRevenue += order.totalCost
+      return totalServiceRevenue
+    }, 0)
+    return parseFloat(orderRevenue.toFixed(2))
+  }
+
+  findTotalRevenueByDate(date = this.todaysDate) {
+    let bookingRevenue = this.findBookingRevenueByDate(date);
+    let roomServiceRevenue = this.findRoomServiceRevenueByDate(date);
+    let totalRevenue = bookingRevenue + roomServiceRevenue;
+    return totalRevenue;
+  }
+
+
+
+
+
 
 
 
