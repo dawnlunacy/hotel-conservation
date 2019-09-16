@@ -11,6 +11,14 @@ const domUpdates =  {
     $('.todays-total-revenue').text('$' + hotel.findTotalRevenueByDate().toLocaleString('en'));
   },
     
+  appendDropDownList(hotel) {
+    hotel.customers.forEach((customer) => {
+      let option = document.createElement('option');
+      option.val = customer.id;
+      option.text = customer.name;
+      $('#customer-select-dropdown').append(option)
+    });
+  }
 }
 
 export default domUpdates

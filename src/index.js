@@ -39,6 +39,7 @@ function instantiateHotel(users, bookings, roomServices, rooms) {
   hotel = new Hotel(users, bookings, roomServices, rooms);
   hotel.hotelHelper();
   domUpdates.appendMainTabDefault(hotel);
+  domUpdates.appendDropDownList(hotel);
 }
 
 $(function() {
