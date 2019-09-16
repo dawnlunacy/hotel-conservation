@@ -12,7 +12,8 @@ const domUpdates =  {
   },
     
   appendDropDownList(hotel) {
-    hotel.customers.forEach((customer) => {
+    let alphabeticalCustomers = hotel.customers.sort((a, b) => a.name.localeCompare(b.name))
+    alphabeticalCustomers.forEach((customer) => {
       let option = document.createElement('option');
       option.val = customer.id;
       option.text = customer.name;
@@ -28,6 +29,15 @@ const domUpdates =  {
   customerSelected(hotel, name) {
     hotel.findCustomerByName(name);
     $('.guide-display').text(name);
+  },
+
+  appendMostAvailableRoomsDate(hotel) {
+    let dateData = hotel.findDateWithMostRoomsAvailable()
+    if (dateData.length === 1) {
+      $('.greatest-availability-date').text(dateData)
+    } else {
+      dateData.forEach(date => $('.greatest-availability-date').append(`<li>${date}</li>`))  
+    }
   }
 }
 

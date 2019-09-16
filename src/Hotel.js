@@ -9,7 +9,8 @@ class Hotel {
   constructor(users, rooms, bookings, roomServiceOrders) {
     this.customers = users;
     this.rooms = rooms;
-    this.bookings = bookings;
+    this.bookings = bookings.sort((a, b) => a.date.localeCompare(b.date));
+    console.log(this.bookings)
     this.roomServiceOrders = roomServiceOrders;
     this.todaysDate;
     this.currentCustomer;
@@ -40,7 +41,7 @@ class Hotel {
   }
 
   findCustomerById(id) {
-      console.log("id", id)
+    console.log("id", id)
     let currentUser = this.customers.find(customer => customer.id === id);
     console.log("**", currentUser)
     this.currentCustomer = currentUser;
@@ -143,7 +144,32 @@ class Hotel {
     return totalRevenue;
   }
 
+  findRoomServiceOrderByDate(date = this.todaysDate) {
+    let roomServiceOrders =  this.roomService.filter(order => order.date === date)
+    return roomServiceOrders;
+  }
 
+  findDateWithMostRoomsAvailable() {
+    var confirmedBookings = [...new Set(this.bookings.map(booking => booking.date ))];
+    let confirmedBookingsTodayOn = confirmedBookings.filter(date => date >= this.findTodaysDate());
+    var bookingTotalPossible = confirmedBookingsTodayOn.length
+    let leastPopularDates = confirmedBookingsTodayOn.reduce((finalDates, bookingDate) => {
+      let bookingCountToday = this.findBookedRoomsByDate(bookingDate).length;
+      if (bookingCountToday < finalDates.bookingsCounter ) {
+        finalDates.date.splice(0, finalDates.date.length, bookingDate);
+        finalDates.bookingsCounter = bookingCountToday
+      }
+      else if (bookingCountToday === finalDates.bookingsCounter ) {
+        finalDates.date.splice(finalDates.date.length, 0, bookingDate)
+        finalDates.bookingsCounter = bookingCountToday;
+      }
+      return finalDates
+    }, {date: [],
+      bookingsCounter: bookingTotalPossible })
+    return leastPopularDates.date
+  } 
+
+    
 
 
 

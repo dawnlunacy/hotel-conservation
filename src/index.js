@@ -40,6 +40,7 @@ function instantiateHotel(users, bookings, roomServices, rooms) {
   hotel.hotelHelper();
   domUpdates.appendMainTabDefault(hotel);
   domUpdates.appendDropDownList(hotel);
+  domUpdates.appendMostAvailableRoomsDate(hotel);
 }
 
 $(function() {
@@ -67,7 +68,6 @@ $(function() {
   })
 
   $('#customer-select-dropdown').on('change', function() {
-      console.log("**this", this.value)
     let name = (this.value);
     domUpdates.customerSelected(hotel, name)
   });
