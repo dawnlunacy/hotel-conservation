@@ -16,8 +16,18 @@ const domUpdates =  {
       let option = document.createElement('option');
       option.val = customer.id;
       option.text = customer.name;
-      $('#customer-select-dropdown').append(option)
+      $('#customer-select-dropdown').append(option);
     });
+  },
+
+  newCustomerEntered(hotel, name) {
+    hotel.createCustomer(name);
+    $('.guide-display').text(name);
+  },
+
+  customerSelected(hotel, name) {
+    hotel.findCustomerByName(name);
+    $('.guide-display').text(name);
   }
 }
 

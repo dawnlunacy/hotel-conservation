@@ -35,11 +35,16 @@ class Hotel {
   
   findCustomerByName(name) {
     let currentUser = this.customers.find(customer => customer.name === name);
+    this.currentCustomer = currentUser;
     return currentUser;
   }
 
   findCustomerById(id) {
+      console.log("id", id)
     let currentUser = this.customers.find(customer => customer.id === id);
+    console.log("**", currentUser)
+    this.currentCustomer = currentUser;
+    console.log(this.currentCustomer)
     return currentUser;
   }
 

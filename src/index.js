@@ -64,7 +64,20 @@ $(function() {
         $(this).addClass('active');
       });
     }
- 
   })
+
+  $('#customer-select-dropdown').on('change', function() {
+      console.log("**this", this.value)
+    let name = (this.value);
+    domUpdates.customerSelected(hotel, name)
+  });
+
+  $('.new-user-btn').on('click', function() {
+    let name = $('.new-user-input').val()
+    domUpdates.newCustomerEntered(hotel, name)
+    domUpdates.appendDropDownList(hotel);
+  })
+
+
 });
 
