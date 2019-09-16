@@ -209,5 +209,30 @@ describe('Hotel', () => {
     })
   })
 
+  describe('findAvailableRoomsByDate', () => {
+    it('should find all rooms available for today ie: all unbooked rooms', () => {
+      expect(hotel.findAvailableRoomsByDate("2019/09/30").length).to.equal(28)
+    });
+  });
+
+  describe('findRoomServiceOrdersByDate', () => {
+    it('should find all of todays room service charges', () => {
+      expect(hotel.findRoomServiceOrdersByDate('2019/09/29')).to.eql( 
+        [{
+          userID: 2,
+          date: "2019/09/29",
+          food: "Rustic Cotton Sandwich",
+          totalCost: 17.33
+        },
+        {
+          userID: 3,
+          date: "2019/09/29",
+          food: "Sleek Frozen Sandwich",
+          totalCost: 15.24
+        }
+        ])
+    });
+  });
+
 })
 

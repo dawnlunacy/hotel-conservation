@@ -94,6 +94,15 @@ class Hotel {
   findBookedRoomsByDate(date = this.todaysDate) {
     return this.bookings.filter(booking => booking.date === date)
   }
+
+  findAvailableRoomsByDate(date = this.todaysDate) {
+    return this.bookings.filter(booking => booking.date !== date)
+  }
+
+  findRoomServiceOrdersByDate(date = this.todaysDate) {
+    return this.roomServiceOrders.filter(order => order.date === date)
+  }
+
   
 
 }
