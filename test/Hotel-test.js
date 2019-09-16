@@ -193,6 +193,21 @@ describe('Hotel', () => {
     })
   })
 
+  describe('findBookedRoomsByDate', () => {
+    it('should find all rooms that are booked for a specified date', () => {
+      expect(hotel.findBookedRoomsByDate("2019/09/30")).to.eql([
+        {
+          userID: 3,
+          date: "2019/09/30",
+          roomNumber: 28
+        },
+        {
+          userID: 14,
+          date: "2019/09/30",
+          roomNumber: 20
+        }])
+    })
+  })
 
 })
 
