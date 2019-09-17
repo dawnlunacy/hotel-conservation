@@ -49,19 +49,34 @@ const domUpdates =  {
     }
   },
 
-  loadOrderTables(hotel) {
+  loadOrderTableMain(hotel) {
     let orderData = hotel.findRoomServiceOrdersByDate();
-    $('.todays-room-service-orders').text(orderData.length);
     $('.todays-room-service-orders-main').text(orderData.length);
-    const orderTableBody = $('#table-order-data');
     const orderTableBodyMain = $('#table-order-data-main');
     let dataHtml = '';
     orderData.forEach((order) => {
       let customer = hotel.findCustomerById(order.userID)
       dataHtml += `<tr><td>${order.userID}</td><td>${customer.name}</td><td>${order.food}</td><td> $${order.totalCost}</td></tr>`
     })
-    orderTableBody.append(dataHtml)
     orderTableBodyMain.append(dataHtml)
+  },
+
+  loadOrderTableDefault(hotel, date = hotel.findTodaysDate()) {
+    let orderData = hotel.findRoomServiceOrdersByDate(date);
+    $('.todays-room-service-orders').text(orderData.length);
+    const orderTableBody = $('#table-order-data');
+    let dataHtml = '';
+    orderData.forEach((order) => {
+      let customer = hotel.findCustomerById(order.userID)
+      dataHtml += `<tr><td>${order.userID}</td><td>${customer.name}</td><td>${order.food}</td><td> $${order.totalCost}</td></tr>`
+    })
+    orderTableBody.append(dataHtml)
+  },
+
+  prepOrderTableDefault(date) {
+    $('.todays-room-service-orders').text(' ');
+    $('#table-order-data').text('')
+    $('.order-default-date').text(date)
   },
 
   loadBookingsTable(hotel) {
