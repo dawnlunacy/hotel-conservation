@@ -12,7 +12,8 @@ const domUpdates =  {
   },
     
   appendDropDownList(hotel) {
-    hotel.customers.forEach((customer) => {
+    let alphabeticalCustomers = hotel.customers.sort((a, b) => a.name.localeCompare(b.name))
+    alphabeticalCustomers.forEach((customer) => {
       let option = document.createElement('option');
       option.val = customer.id;
       option.text = customer.name;
@@ -28,6 +29,50 @@ const domUpdates =  {
   customerSelected(hotel, name) {
     hotel.findCustomerByName(name);
     $('.guide-display').text(name);
+  },
+
+  appendMostPopularDate(hotel) {
+    let dateData = hotel.findMostPopularBookingDate()
+    if (dateData.length === 1) {
+      $('.most-popular-booking-date').text(dateData)
+    } else {
+      dateData.forEach(date => $('.most-popular-booking-date').append(`<li>${date}</li>`))  
+    }
+  },
+
+  appendMostAvailableRoomsDate(hotel) {
+    let dateData = hotel.findDateWithMostRoomsAvailable()
+    if (dateData.length === 1) {
+      $('.greatest-availability-date').text(dateData)
+    } else {
+      dateData.forEach(date => $('.greatest-availability-date').append(`<li>${date}</li>`))  
+    }
+  },
+
+  loadOrderTable(hotel) {
+    let orderData = hotel.findRoomServiceOrdersByDate();
+    $('.todays-room-service-orders').text(orderData.length);
+    const orderTableBody = $('#table-order-data');
+    let dataHtml = '';
+    orderData.forEach((order) => {
+      dataHtml += `<tr><td>${order.userID}</td><td>${order.food}</td><td> $${order.totalCost}</td></tr>`
+    })
+    orderTableBody.append(dataHtml)
+  },
+
+  loadBookingsTable(hotel) {
+    let bookingData = hotel.findBookedRoomsByDate();
+    $('.todays-bookings-details').text(bookingData.length);
+    const bookingTableBody = $('#bookings-default-table-data');
+    let dataHtml = '';
+    bookingData.forEach((booking) => {
+      let customer = hotel.findCustomerById(booking.userID)
+      console.log(booking.roomNumber)
+      let costOfRoom = hotel.findCostOfRoom(booking.roomNumber);
+      console.log(costOfRoom)
+      dataHtml += `<tr><td>${booking.userID}</td><td>${customer.name}</td><td> ${booking.roomNumber}</td><td> $${costOfRoom}</td>`
+    })
+    bookingTableBody.append(dataHtml);
   }
 }
 
