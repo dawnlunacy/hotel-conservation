@@ -41,7 +41,7 @@ function instantiateHotel(users, bookings, roomServices, rooms) {
   domUpdates.appendDropDownList(hotel);
   domUpdates.appendMostAvailableRoomsDate(hotel);
   domUpdates.appendMostPopularDate(hotel);
-  domUpdates.loadOrderTable(hotel);
+  domUpdates.loadOrderTables(hotel);
   domUpdates.loadBookingsTable(hotel);
 }
 
@@ -56,7 +56,7 @@ $(function() {
     $(this).addClass('active');
 
     let $tabToShow = $(this).attr('rel');
-
+    
     $tabLabel.find('.tabLabel-active').slideToggle(200, showCurrentTab());
 
     function showCurrentTab() {
@@ -80,6 +80,7 @@ $(function() {
     domUpdates.appendDropDownList(hotel);
   })
 
+  
 
 });
 

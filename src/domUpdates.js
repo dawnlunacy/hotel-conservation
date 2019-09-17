@@ -49,15 +49,19 @@ const domUpdates =  {
     }
   },
 
-  loadOrderTable(hotel) {
+  loadOrderTables(hotel) {
     let orderData = hotel.findRoomServiceOrdersByDate();
     $('.todays-room-service-orders').text(orderData.length);
+    $('.todays-room-service-orders-main').text(orderData.length);
     const orderTableBody = $('#table-order-data');
+    const orderTableBodyMain = $('#table-order-data-main');
     let dataHtml = '';
     orderData.forEach((order) => {
-      dataHtml += `<tr><td>${order.userID}</td><td>${order.food}</td><td> $${order.totalCost}</td></tr>`
+      let customer = hotel.findCustomerById(order.userID)
+      dataHtml += `<tr><td>${order.userID}</td><td>${customer.name}</td><td>${order.food}</td><td> $${order.totalCost}</td></tr>`
     })
     orderTableBody.append(dataHtml)
+    orderTableBodyMain.append(dataHtml)
   },
 
   loadBookingsTable(hotel) {
@@ -67,9 +71,7 @@ const domUpdates =  {
     let dataHtml = '';
     bookingData.forEach((booking) => {
       let customer = hotel.findCustomerById(booking.userID)
-      console.log(booking.roomNumber)
       let costOfRoom = hotel.findCostOfRoom(booking.roomNumber);
-      console.log(costOfRoom)
       dataHtml += `<tr><td>${booking.userID}</td><td>${customer.name}</td><td> ${booking.roomNumber}</td><td> $${costOfRoom}</td>`
     })
     bookingTableBody.append(dataHtml);
