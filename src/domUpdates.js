@@ -3,7 +3,8 @@ import $ from 'jquery';
 const domUpdates =  {
 
   appendMainTabDefault(hotel) {
-    $('.todays-date').text(hotel.findTodaysDate());
+    hotel.findTodaysDate();
+    this.displayDateFormat();
     $('.todays-total-rooms-available').text((hotel.findAvailableRoomsByDate()).toLocaleString('en'));
     $('.todays-total-percentage-occupied').text(hotel.findPercentageOfRoomsOccupied() + '%');
     $('.todays-room-service-revenue').text('$' + hotel.findRoomServiceRevenueByDate().toLocaleString('en'));
@@ -12,6 +13,7 @@ const domUpdates =  {
   },
     
   appendDropDownList(hotel) {
+    $('#customer-select-dropdown').empty()
     let alphabeticalCustomers = hotel.customers.sort((a, b) => a.name.localeCompare(b.name))
     alphabeticalCustomers.forEach((customer) => {
       let option = document.createElement('option');
@@ -24,6 +26,7 @@ const domUpdates =  {
   newCustomerEntered(hotel, name) {
     hotel.createCustomer(name);
     $('.guide-display').text(name);
+    $('.customer-name').text(name);
   },
 
   customerSelected(hotel, name) {
@@ -114,6 +117,13 @@ const domUpdates =  {
     let dateControls = document.querySelectorAll('input[type="date"]');
     let today = new Date().toISOString().slice(0, 10)
     dateControls.forEach(control => control.value = today);
+  },
+
+  displayDateFormat() {
+    let date = new Date()
+    let formatDate = date.toString().split(' ').slice(0, 4).join(' ');
+    $('.todays-date').text(formatDate);
+
   }
 }
 

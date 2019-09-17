@@ -108,12 +108,12 @@ class Hotel {
   findActualAvailableRoomsByDate(date = this.todayDate) {
     let bookedRoomNumbersOnDate = this.findBookedRoomsByDate(date).map(room => room.roomNumber);
     let availableRooms = this.rooms.reduce((acc, currentRoom) => {
-        if (!bookedRoomNumbersOnDate.includes(currentRoom.number)) {
-            acc.push(currentRoom)
-        }
-        return acc
+      if (!bookedRoomNumbersOnDate.includes(currentRoom.number)) {
+        acc.push(currentRoom)
+      }
+      return acc
     }, [])
-console.log("answer", availableRooms)
+    console.log("answer", availableRooms)
     console.log("bookedRooms", bookedRoomNumbersOnDate);
     return availableRooms;
   
