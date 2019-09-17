@@ -105,6 +105,20 @@ class Hotel {
     return numberOfRoomsAvailableToday;
   }
 
+  findActualAvailableRoomsByDate(date = this.todayDate) {
+    let bookedRoomNumbersOnDate = this.findBookedRoomsByDate(date).map(room => room.roomNumber);
+    let availableRooms = this.rooms.reduce((acc, currentRoom) => {
+        if (!bookedRoomNumbersOnDate.includes(currentRoom.number)) {
+            acc.push(currentRoom)
+        }
+        return acc
+    }, [])
+console.log("answer", availableRooms)
+    console.log("bookedRooms", bookedRoomNumbersOnDate);
+    return availableRooms;
+  
+  }
+
   findRoomServiceOrdersByDate(date = this.todaysDate) {
     return this.roomServiceOrders.filter(order => order.date === date)
   }

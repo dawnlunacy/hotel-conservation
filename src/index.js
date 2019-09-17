@@ -44,6 +44,7 @@ function instantiateHotel(users, bookings, roomServices, rooms) {
   domUpdates.loadOrderTableMain(hotel);
   domUpdates.loadOrderTableDefault(hotel);
   domUpdates.loadBookingsTable(hotel);
+  domUpdates.loadRoomsAvailableTableDefault(hotel);
   domUpdates.setDefaultValueForCalendars();
 }
 
@@ -116,7 +117,7 @@ $(function() {
     return dateSelected;
   })
 
-//   $('.calendar-booking-default').on('click', function(e) {
+//   $('#calendar-booking-default').on('click', function(e) {
 //     e.preventDefault();
 //     let fixedDate = $('.calendar-booking-default').val().replace(/-/g, '\/')
 //     let date = new Date(fixedDate);

@@ -92,6 +92,18 @@ const domUpdates =  {
     bookingTableBody.append(dataHtml);
   },
 
+  loadRoomsAvailableTableDefault(hotel, date = hotel.findTodaysDate()) {
+    let availableRoomData = hotel.findActualAvailableRoomsByDate(date);
+    console.log("rooms", availableRoomData)
+    $('.total-rooms-available-default').text(availableRoomData.length);
+    const availableRoomsTableBody = $('#rooms-available-data');
+    let dataHtml = '';
+    availableRoomData.forEach((room) => {
+      dataHtml += `<tr><td>${room.number}</td><td>${room.roomType}</td><td>${room.bidet}</td><td> ${room.numBeds}</td><td>${room.bedSize}</td><td> $${room.costPerNight}</td></tr>`
+    })
+    availableRoomsTableBody.append(dataHtml);
+  },
+
   setDefaultValueForCalendars() {
     let dateControls = document.querySelectorAll('input[type="date"]');
     let today = new Date().toISOString().slice(0, 10)

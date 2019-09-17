@@ -42,7 +42,7 @@
           <h3> Total Booking Revenue: <span class="todays-total-booking-revenue"></span></h3>
           <h3> Total Revenue: <span class="todays-total-revenue"></span></span></h3>
           <div>
-              <h3> Tooday's Booking Details : <span class="todays-bookings-details"></span></span> Booked Rooms : </h3>
+              <h3> Today's Booking Details : <span class="todays-bookings-details"></span></span> Booked Rooms : </h3>
           <table class="bookings-default-table">
               <thead>
                 <tr>
@@ -93,10 +93,25 @@
           </ul>
           <form>
           <div class="search-by-date">
-              <label for="calendar">Select a date to see booking information for that date</label>
+              <label for="calendar">Select a date to see available rooms for that date</label>
               <input type="date" id="calendar-booking-default" name="calendar-input" min="2019-07-23" max="2019-10-31">
             </div>
           </form>
+          <h3> Total Rooms Available For <span class="rooms-available-default-date"> Today </span> : <span class="total-rooms-available-default"></span></span></h3>
+          <table class="rooms-available-default-table">
+              <thead>
+                <tr>
+                  <th> Room Number </th>
+                  <th> Room Type </th>
+                  <th> Has Bidet </th>
+                  <th> Number of Beds </th>
+                  <th> Bed Size </th>
+                  <th> Cost Per Night </th>
+                </tr>
+              </thead>
+              <tbody id="rooms-available-data">
+              </tbody>
+            </table> 
        </section>
       <section id="rooms-customer-default" style="display:none"></section>
       <section id="orders-default" style="display:none"> 
