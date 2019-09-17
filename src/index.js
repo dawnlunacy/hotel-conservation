@@ -41,8 +41,11 @@ function instantiateHotel(users, bookings, roomServices, rooms) {
   domUpdates.appendDropDownList(hotel);
   domUpdates.appendMostAvailableRoomsDate(hotel);
   domUpdates.appendMostPopularDate(hotel);
-  domUpdates.loadOrderTables(hotel);
+  domUpdates.loadOrderTableMain(hotel);
+  domUpdates.loadOrderTableDefault(hotel);
   domUpdates.loadBookingsTable(hotel);
+  domUpdates.loadAvailableRoomsTableDefault(hotel);
+  domUpdates.setDefaultValueForCalendars();
 }
 
 $(function() {
@@ -80,7 +83,58 @@ $(function() {
     domUpdates.appendDropDownList(hotel);
   })
 
-  
+  $('#calendar').on('change', function() {
+    let date = new Date($('#calendar').val());
+    let dd = String(date.getDate()).padStart(2, '0');
+    let mm = String(date.getMonth() + 1).padStart(2, '0');
+    let yyyy = date.getFullYear();
+    console.log([yyyy, mm, dd].join('/'));
+    let dateSelected = [yyyy, mm, dd].join('/');
+    return dateSelected;
+  })
+
+  $('.available-booking-date-default-btn').on('click', function(e) {
+    e.preventDefault();
+    let fixedDate = $('#calendar-booking-default').val().replace(/-/g, '\/')
+    let date = new Date(fixedDate);
+    let dateString = date.toString().split(' ').slice(0, 4).join(' ');
+    let dd = String(date.getDate()).padStart(2, '0');
+    let mm = String(date.getMonth() + 1).padStart(2, '0');
+    let yyyy = date.getFullYear();
+    let dateSelected = [yyyy, mm, dd].join('/');
+    domUpdates.prepBookingsTableDefault(dateString);
+    domUpdates.loadAvailableRoomsTableDefault(hotel, dateSelected)
+    return dateSelected;
+  })
+
+  $('.order-date-default-btn').on('click', function(e) {
+    e.preventDefault();
+    let fixedDate = $('#calendar-orders-default').val().replace(/-/g, '\/')
+    let date = new Date(fixedDate);
+    let dateString = date.toString().split(' ').slice(0, 4).join(' ');
+    let dd = String(date.getDate()).padStart(2, '0');
+    let mm = String(date.getMonth() + 1).padStart(2, '0');
+    let yyyy = date.getFullYear();
+    let dateSelected = [yyyy, mm, dd].join('/');
+    domUpdates.prepOrderTableDefault(dateString);
+    domUpdates.loadOrderTableDefault(hotel, dateSelected)
+    return dateSelected;
+  })
+
+//   $('#calendar-booking-default').on('click', function(e) {
+//     e.preventDefault();
+//     let fixedDate = $('.calendar-booking-default').val().replace(/-/g, '\/')
+//     let date = new Date(fixedDate);
+//     let dateString = date.toString().split(' ').slice(0, 4).join(' ');
+//     let dd = String(date.getDate()).padStart(2, '0');
+//     let mm = String(date.getMonth() + 1).padStart(2, '0');
+//     let yyyy = date.getFullYear();
+//     let dateSelected = [yyyy, mm, dd].join('/');
+//     domUpdates.prepOrderTableDefault(dateString);
+//     domUpdates.loadOrderTableDefault(hotel, dateSelected)
+//     return dateSelected;
+//   })
+
 
 });
 
