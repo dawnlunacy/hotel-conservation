@@ -127,6 +127,70 @@ th {
   width: 200px;
 }
 
+// h4 {
+//   text-align: center;
+//   font-size: 2.5em;
+//   margin: auto;
+//   display: block;
+
+// }
+
+.find-customer {
+  display: flex;
+  justify-content: space-around;
+  padding: 15px;
+    p {
+      padding: 10px;
+    }
+}
+
+p {
+  margin: 0;
+  padding: 10px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+#customer-select-dropdown {
+  width: 250px;
+  height: 50px;
+  font-size: 20px;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.find-user {
+  margin-top: 50px;
+}
+
+.new-user-intake {
+  font-size: 20px;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  .new-user-input {
+    width: 250px;
+    height: 50px;
+    border-radius: 5px;
+    text-align: center;
+    font-size: 15px;
+    font-weight: 500;
+    margin-bottom: 25px;
+  }
+}
+
+.new-user-btn {
+  margin: 20px;
+  width: 225px;
+  height: 50px;
+  background-color: #7CB0F6;
+  opacity: 1;
+  border-radius: 25px;
+  display: block;
+  font-size: 15px;
+  font-weight: 700;
+}
+
 #page-container {
   position: relative;
   min-height: 100vh;
