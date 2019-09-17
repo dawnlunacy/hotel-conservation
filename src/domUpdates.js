@@ -90,6 +90,12 @@ const domUpdates =  {
       dataHtml += `<tr><td>${booking.userID}</td><td>${customer.name}</td><td> ${booking.roomNumber}</td><td> $${costOfRoom}</td>`
     })
     bookingTableBody.append(dataHtml);
+  },
+
+  setDefaultValueForCalendars() {
+    let dateControls = document.querySelectorAll('input[type="date"]');
+    let today = new Date().toISOString().slice(0, 10)
+    dateControls.forEach(control => control.value = today);
   }
 }
 

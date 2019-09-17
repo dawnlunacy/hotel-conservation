@@ -44,6 +44,7 @@ function instantiateHotel(users, bookings, roomServices, rooms) {
   domUpdates.loadOrderTableMain(hotel);
   domUpdates.loadOrderTableDefault(hotel);
   domUpdates.loadBookingsTable(hotel);
+  domUpdates.setDefaultValueForCalendars();
 }
 
 $(function() {
@@ -114,6 +115,20 @@ $(function() {
     domUpdates.loadOrderTableDefault(hotel, dateSelected)
     return dateSelected;
   })
+
+//   $('.calendar-booking-default').on('click', function(e) {
+//     e.preventDefault();
+//     let fixedDate = $('.calendar-booking-default').val().replace(/-/g, '\/')
+//     let date = new Date(fixedDate);
+//     let dateString = date.toString().split(' ').slice(0, 4).join(' ');
+//     let dd = String(date.getDate()).padStart(2, '0');
+//     let mm = String(date.getMonth() + 1).padStart(2, '0');
+//     let yyyy = date.getFullYear();
+//     let dateSelected = [yyyy, mm, dd].join('/');
+//     domUpdates.prepOrderTableDefault(dateString);
+//     domUpdates.loadOrderTableDefault(hotel, dateSelected)
+//     return dateSelected;
+//   })
 
 
 });
