@@ -92,7 +92,13 @@ const domUpdates =  {
     bookingTableBody.append(dataHtml);
   },
 
-  loadRoomsAvailableTableDefault(hotel, date = hotel.findTodaysDate()) {
+  prepBookingsTableDefault(date) {
+    $('.todays-bookings-details').text(' ');
+    $('#rooms-available-data').text('');
+    $('.rooms-available-default-date').text(date)
+  },
+
+  loadAvailableRoomsTableDefault(hotel, date = hotel.findTodaysDate()) {
     let availableRoomData = hotel.findActualAvailableRoomsByDate(date);
     console.log("rooms", availableRoomData)
     $('.total-rooms-available-default').text(availableRoomData.length);
