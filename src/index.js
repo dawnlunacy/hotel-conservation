@@ -14,6 +14,7 @@ import './css/base.scss';
 import './images/turing-logo.png'
 import './images/plant.svg'
 
+
 let hotel;
 
 let usersAPICall = fetch("https://fe-apps.herokuapp.com/api/v1/overlook/1904/users/users");
@@ -53,7 +54,10 @@ $(function() {
     let $tabLabel = $(this).closest('.tab-labels');
 
     let $tabToHideId = '#' + $tabLabel.find('.tabs li.active').attr('rel') + '-default'
+    let $tabToHideId2 = '#' + $tabLabel.find('.tabs li.active').attr('rel') + '-customer-selected'
     $($tabToHideId).hide() 
+    $($tabToHideId2).hide()
+    
 
     $tabLabel.find('.tabs li.active').removeClass('active');
     $(this).addClass('active');
@@ -63,12 +67,35 @@ $(function() {
     $tabLabel.find('.tabLabel-active').slideToggle(200, showCurrentTab());
 
     function showCurrentTab() {
-      $(this).removeClass('active');
-
-      let $tabToShowId = '#' + $tabToShow + '-default'
-      $($tabToShowId).slideDown(200, function() {
-        $(this).addClass('active');
-      });
+      if ($('.guide-display').text() === ' Welcome Admin ') {
+        let $tabToShowId = '#' + $tabToShow + '-default'
+        $($tabToShowId).slideDown(200, function() {
+          $(this).addClass('active');
+        });
+      }
+      if ($('.guide-display').text() !== ' Welcome Admin ' || $tabToShow === 'main' || $tabToShow === 'customers') {
+        let $tabToShowId = '#' + $tabToShow + '-default'
+        $($tabToShowId).slideDown(200, function() {
+          $(this).addClass('active');
+        });
+      } 
+      if ($('.guide-display').text() !== ' Welcome Admin ' && $tabToShow === 'rooms') {
+        let $tabToHideId = '#' + $tabLabel.find('.tabs li.active').attr('rel') + '-default'
+        $($tabToHideId).hide() 
+        let $tabToShowId = '#' + $tabToShow + '-customer-selected'
+        $($tabToShowId).slideDown(200, function() {
+          $(this).addClass('active');
+        });
+      }
+      if ($('.guide-display').text() !== ' Welcome Admin ' && $tabToShow === 'orders') {
+        let $tabToHideId = '#' + $tabLabel.find('.tabs li.active').attr('rel') + '-default'
+        $($tabToHideId).hide() 
+        let $tabToShowId = '#' + $tabToShow + '-customer-selected'
+        $($tabToShowId).slideDown(200, function() {
+          $(this).addClass('active');
+        });
+      }
+      
     }
   })
 
@@ -120,19 +147,19 @@ $(function() {
     return dateSelected;
   })
 
-//   $('#calendar-booking-default').on('click', function(e) {
-//     e.preventDefault();
-//     let fixedDate = $('.calendar-booking-default').val().replace(/-/g, '\/')
-//     let date = new Date(fixedDate);
-//     let dateString = date.toString().split(' ').slice(0, 4).join(' ');
-//     let dd = String(date.getDate()).padStart(2, '0');
-//     let mm = String(date.getMonth() + 1).padStart(2, '0');
-//     let yyyy = date.getFullYear();
-//     let dateSelected = [yyyy, mm, dd].join('/');
-//     domUpdates.prepOrderTableDefault(dateString);
-//     domUpdates.loadOrderTableDefault(hotel, dateSelected)
-//     return dateSelected;
-//   })
+  //   $('#calendar-booking-default').on('click', function(e) {
+  //     e.preventDefault();
+  //     let fixedDate = $('.calendar-booking-default').val().replace(/-/g, '\/')
+  //     let date = new Date(fixedDate);
+  //     let dateString = date.toString().split(' ').slice(0, 4).join(' ');
+  //     let dd = String(date.getDate()).padStart(2, '0');
+  //     let mm = String(date.getMonth() + 1).padStart(2, '0');
+  //     let yyyy = date.getFullYear();
+  //     let dateSelected = [yyyy, mm, dd].join('/');
+  //     domUpdates.prepOrderTableDefault(dateString);
+  //     domUpdates.loadOrderTableDefault(hotel, dateSelected)
+  //     return dateSelected;
+  //   })
 
 
 });

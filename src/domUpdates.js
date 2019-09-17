@@ -32,6 +32,8 @@ const domUpdates =  {
   customerSelected(hotel, name) {
     hotel.findCustomerByName(name);
     $('.guide-display').text(name);
+    $('.customer-name').text(name);
+
   },
 
   appendMostPopularDate(hotel) {
