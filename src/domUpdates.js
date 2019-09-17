@@ -131,6 +131,22 @@ const domUpdates =  {
     availableRoomsTableBody.append(dataHtml);
   },
 
+  loadCurrentBookingHistoryForCustomer(hotel) {
+    this.prepCurrentBookingsHistoryForCustomer();
+    let currentBookings = hotel.findCurrentBookingsForCurrentCustomer();
+    $('.current-bookings-total-number').text(currentBookings.length);
+    const CurrentBookingsInfo = $('#current-bookings-customer-data');
+    let dataHtml = '';
+    currentBookings.forEach((booking) => {
+      dataHtml += `<tr><td>${booking.userID}</td><td>${booking.date}</td><td>${booking.roomNumber}</td><td><button class="cancel ${booking.date}" id=${booking.roomNumber}> Cancel</button></td><td><button class="change ${booking.date}" id=${booking.roomNumber}> Change</button></td><td><button class="order ${booking.date}" id=${booking.roomNumber}> Order</button></td>`
+    })
+    CurrentBookingsInfo.append(dataHtml);
+  },
+
+  prepCurrentBookingsHistoryForCustomer() {
+    $('#current-bookings-customer-data').text('')
+  },
+
   loadPastBookingHistoryForCustomer(hotel) {
     this.prepPastBookingsHistoryForCustomer();
     let bookingHistory = hotel.findPastBookingsForCurrentCustomer();
@@ -144,7 +160,7 @@ const domUpdates =  {
   },
 
   prepPastBookingsHistoryForCustomer() {
-    $('#rooms-available-data').text('')
+    $('#past-bookings-customer-data').text('')
   },
 
   setDefaultValueForCalendars() {

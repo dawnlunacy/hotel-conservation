@@ -205,6 +205,12 @@ class Hotel {
     return this.rooms.filter(room => room.number === roomNumber)[0].costPerNight;
   }
 
+  findCurrentBookingsForCurrentCustomer() {
+    let stringDate = this.todaysDate;
+    let pastBookings = this.currentCustomer.bookings.filter(bookings => bookings.date >= stringDate);
+    return pastBookings
+  }
+
   findPastBookingsForCurrentCustomer() {
     let stringDate = this.todaysDate;
     let pastBookings = this.currentCustomer.bookings.filter(bookings => bookings.date < stringDate);

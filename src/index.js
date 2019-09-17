@@ -103,6 +103,7 @@ $(function() {
     let name = (this.value);
     domUpdates.customerSelected(hotel, name);
     domUpdates.loadOrderTableCustomerSelected(hotel);
+    domUpdates.loadCurrentBookingHistoryForCustomer(hotel);
     domUpdates.loadPastBookingHistoryForCustomer(hotel);
   });
 
@@ -149,20 +150,10 @@ $(function() {
     return dateSelected;
   })
 
-  //   $('#calendar-booking-default').on('click', function(e) {
-  //     e.preventDefault();
-  //     let fixedDate = $('.calendar-booking-default').val().replace(/-/g, '\/')
-  //     let date = new Date(fixedDate);
-  //     let dateString = date.toString().split(' ').slice(0, 4).join(' ');
-  //     let dd = String(date.getDate()).padStart(2, '0');
-  //     let mm = String(date.getMonth() + 1).padStart(2, '0');
-  //     let yyyy = date.getFullYear();
-  //     let dateSelected = [yyyy, mm, dd].join('/');
-  //     domUpdates.prepOrderTableDefault(dateString);
-  //     domUpdates.loadOrderTableDefault(hotel, dateSelected)
-  //     return dateSelected;
-  //   })
-
+  $('#current-bookings-customer-data').on('click', '.cancel', function(e) {
+    e.preventDefault();
+    console.log("clickityCLick", $(this))
+  })
 
 });
 
