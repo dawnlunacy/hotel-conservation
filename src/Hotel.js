@@ -12,6 +12,7 @@ class Hotel {
     this.bookings = bookings.sort((a, b) => a.date.localeCompare(b.date));
     console.log(this.bookings)
     this.roomServiceOrders = roomServiceOrders;
+    console.log(this.roomServiceOrders.sort((a, b) => a.date.localeCompare(b.date)));
     this.todaysDate;
     this.currentCustomer;
   }

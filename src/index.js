@@ -102,18 +102,13 @@ $(function() {
   })
 
   $('.order-date-default-btn').on('click', function(e) {
-      e.preventDefault();
-      console.log("OG", $('#calendar-orders-default').val())
-      console.log("FIXOG", $('#calendar-orders-default').val().replace(/-/g, '\/'))
-      let fixedDate = $('#calendar-orders-default').val().replace(/-/g, '\/')
-    let date = new Date($('#calendar-orders-default').val());
-    console.log("DATE", date)
-    console.log("CORRECT DATE", new Date(fixedDate))
+    e.preventDefault();
+    let fixedDate = $('#calendar-orders-default').val().replace(/-/g, '\/')
+    let date = new Date(fixedDate);
     let dateString = date.toString().split(' ').slice(0, 4).join(' ');
-    let dd = String(date.getDate() + 1).padStart(2, '0');
+    let dd = String(date.getDate()).padStart(2, '0');
     let mm = String(date.getMonth() + 1).padStart(2, '0');
     let yyyy = date.getFullYear();
-    console.log("date:", [yyyy, mm, dd].join('/'));
     let dateSelected = [yyyy, mm, dd].join('/');
     domUpdates.prepOrderTableDefault(dateString);
     domUpdates.loadOrderTableDefault(hotel, dateSelected)
