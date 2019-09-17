@@ -122,7 +122,6 @@ const domUpdates =  {
 
   loadAvailableRoomsTableDefault(hotel, date = hotel.findTodaysDate()) {
     let availableRoomData = hotel.findActualAvailableRoomsByDate(date);
-    console.log("rooms", availableRoomData)
     $('.total-rooms-available-default').text(availableRoomData.length);
     const availableRoomsTableBody = $('#rooms-available-data');
     let dataHtml = '';
@@ -130,6 +129,22 @@ const domUpdates =  {
       dataHtml += `<tr><td>${room.number}</td><td>${room.roomType}</td><td>${room.bidet}</td><td> ${room.numBeds}</td><td>${room.bedSize}</td><td> $${room.costPerNight}</td></tr>`
     })
     availableRoomsTableBody.append(dataHtml);
+  },
+
+  loadPastBookingHistoryForCustomer(hotel) {
+    this.prepPastBookingsHistoryForCustomer();
+    let bookingHistory = hotel.findPastBookingsForCurrentCustomer();
+    $('.past-bookings-total-number').text(bookingHistory.length);
+    const bookedRoomHistory = $('#past-bookings-customer-data');
+    let dataHtml = '';
+    bookingHistory.forEach((booking) => {
+      dataHtml += `<tr><td>${booking.userID}</td><td>${booking.date}</td><td>${booking.roomNumber}</td>`
+    })
+    bookedRoomHistory.append(dataHtml);
+  },
+
+  prepPastBookingsHistoryForCustomer() {
+    $('#rooms-available-data').text('')
   },
 
   setDefaultValueForCalendars() {

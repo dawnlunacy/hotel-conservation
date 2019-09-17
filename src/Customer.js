@@ -2,7 +2,7 @@ class Customer {
   constructor(name, id, bookings = [], roomServiceOrders = []) {
     this.name = name;  
     this.id = id;
-    this.bookings = bookings;
+    this.bookings = bookings.sort((a, b) => b.date.localeCompare(a.date));
     this.roomServiceOrders = roomServiceOrders;
   }
 

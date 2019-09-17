@@ -101,13 +101,14 @@ $(function() {
 
   $('#customer-select-dropdown').on('change', function() {
     let name = (this.value);
-    domUpdates.customerSelected(hotel, name)
-    domUpdates.loadOrderTableCustomerSelected(hotel)
+    domUpdates.customerSelected(hotel, name);
+    domUpdates.loadOrderTableCustomerSelected(hotel);
+    domUpdates.loadPastBookingHistoryForCustomer(hotel);
   });
 
   $('.new-user-btn').on('click', function() {
-    let name = $('.new-user-input').val()
-    domUpdates.newCustomerEntered(hotel, name)
+    let name = $('.new-user-input').val();
+    domUpdates.newCustomerEntered(hotel, name);
     domUpdates.appendDropDownList(hotel);
   })
 
