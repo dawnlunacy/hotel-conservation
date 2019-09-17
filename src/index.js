@@ -152,7 +152,9 @@ $(function() {
 
   $('#current-bookings-customer-data').on('click', '.cancel', function(e) {
     e.preventDefault();
-    console.log("clickityCLick", $(this))
+    console.log("clickityCLick", $(this)[0])
+    console.log("clickityCLickClass", $(this)[0].classList[1])
+    console.log("clickityCLickID", $(this)[0].id)
   })
 
 });
