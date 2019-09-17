@@ -102,6 +102,7 @@ $(function() {
   $('#customer-select-dropdown').on('change', function() {
     let name = (this.value);
     domUpdates.customerSelected(hotel, name)
+    domUpdates.loadOrderTableCustomerSelected(hotel)
   });
 
   $('.new-user-btn').on('click', function() {

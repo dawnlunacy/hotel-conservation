@@ -78,10 +78,27 @@ const domUpdates =  {
     orderTableBody.append(dataHtml)
   },
 
+  loadOrderTableCustomerSelected(hotel) {
+    this.prepOrderTableCustomerSelected();
+    let orderData = hotel.currentCustomer.roomServiceOrders;
+    $('.customer-order-history-total').text(orderData.length);
+    $('.customer-order-history-cost').text(`$${hotel.currentCustomer.findRoomServiceCostTotalEver()}`)
+    const orderTableBody = $('#table-order-customer-data');
+    let dataHtml = '';
+    orderData.forEach((order) => {
+      dataHtml += `<tr><td>${order.userID}</td><td>${order.date}</td><td>${order.food}</td><td>$${order.totalCost}</td></tr>`
+    })
+    orderTableBody.append(dataHtml)
+  },
+
   prepOrderTableDefault(date) {
     $('.todays-room-service-orders').text(' ');
     $('#table-order-data').text('')
     $('.order-default-date').text(date)
+  },
+
+  prepOrderTableCustomerSelected() {
+    $('#table-order-customer-data').text('')
   },
 
   loadBookingsTable(hotel) {

@@ -5,6 +5,15 @@ class Customer {
     this.bookings = bookings;
     this.roomServiceOrders = roomServiceOrders;
   }
+
+  findRoomServiceCostTotalEver() {
+    let roomServiceOrders = this.roomServiceOrders;
+    let orderTotal =  roomServiceOrders.reduce((totalServiceRevenue, order) => {
+      totalServiceRevenue += order.totalCost
+      return totalServiceRevenue
+    }, 0);
+    return parseFloat(orderTotal.toFixed(2))
+  }
 }
 
 export default Customer

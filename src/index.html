@@ -122,7 +122,9 @@
               </tbody>
             </table> 
        </section>
-      <section id="rooms-customer-selected" style="display:none"> <p>Hello Customer Book a rOom</p></section>
+      <section id="rooms-customer-selected" style="display:none"> 
+        <p> Viewing information for <span class="customer-name"></span></p>
+      </section>
       <section id="orders-default" style="display:none"> 
           <h3> Total Room Service Orders for <span class="order-default-date"> Today </span> : <span class="todays-room-service-orders"></span></span></h3>
           <table class="orders-table">
@@ -147,6 +149,20 @@
       </section>
       <section id="orders-customer-selected" style="display:none">
         <p> Viewing information for <span class="customer-name"></span></p>
+        <h3> Total Room Service Orders Ever : <span class="customer-order-history-total"></span></h3>
+        <h3> Total Spent On Room Service Orders Ever : <span class="customer-order-history-cost"></span></h3>
+        <table class="orders-table-customer-selected">
+          <thead>
+            <tr>
+              <th> Customer ID </th>
+              <th> Date Of Order </th>
+              <th> Food </th>
+              <th> Cost</th>
+            </tr>
+          </thead>
+          <tbody id="table-order-customer-data">
+          </tbody>
+        </table> 
       </section>
       </main> 
     </div>
