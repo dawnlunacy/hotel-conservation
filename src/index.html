@@ -22,7 +22,7 @@
         <form>
             <div class="search-by-date">
               <label for="calendar">Enter a date to see info </label>
-              <input type="date" id="calendar" name="calendar-input">
+              <input type="date" id="calendar" name="calendar-input" min="2019-07-23" max="2019-10-31">
             </div>
           </form>
       <ul class= "tabs">
@@ -42,7 +42,7 @@
           <h3> Total Booking Revenue: <span class="todays-total-booking-revenue"></span></h3>
           <h3> Total Revenue: <span class="todays-total-revenue"></span></span></h3>
           <div>
-              <h3> Tooday's Booking Details : <span class="todays-bookings-details"></span></span> Booked Rooms : </h3>
+              <h3> Today's Booking Details : <span class="todays-bookings-details"></span></span> Booked Rooms : </h3>
           <table class="bookings-default-table">
               <thead>
                 <tr>
@@ -55,6 +55,21 @@
               <tbody id="bookings-default-table-data">
               </tbody>
             </table> 
+          </div>
+          <div>
+              <h3> Total Room Service Orders for Today : <span class="todays-room-service-orders-main"></span></span></h3>
+              <table class="orders-table-main">
+                  <thead>
+                    <tr>
+                      <th> Customer ID</th>
+                      <th> Customer Name</th>
+                      <th> Food </th>
+                      <th> Cost</th>
+                    </tr>
+                  </thead>
+                  <tbody id="table-order-data-main">
+                  </tbody>
+                </table> 
           </div>
       </section>
       <section id="main-customer-selected" style="display:none"> </section>
@@ -76,14 +91,37 @@
           <h3> Most Popular Booking Dates Ever :</h3>
           <ul class="most-popular-booking-date">
           </ul>
+          <form>
+          <div class="search-by-date">
+              <label for="calendar">Select a date to see available rooms for that date</label>
+              <input type="date" id="calendar-booking-default" name="calendar-input" min="2019-07-23" max="2019-10-31">
+              <button class="available-booking-date-default-btn">See Available Rooms</button>
+            </div>
+          </form>
+          <h3> Total Rooms Available For <span class="rooms-available-default-date"> Today </span> : <span class="total-rooms-available-default"></span></span></h3>
+          <table class="rooms-available-default-table">
+              <thead>
+                <tr>
+                  <th> Room Number </th>
+                  <th> Room Type </th>
+                  <th> Has Bidet </th>
+                  <th> Number of Beds </th>
+                  <th> Bed Size </th>
+                  <th> Cost Per Night </th>
+                </tr>
+              </thead>
+              <tbody id="rooms-available-data">
+              </tbody>
+            </table> 
        </section>
       <section id="rooms-customer-default" style="display:none"></section>
       <section id="orders-default" style="display:none"> 
-          <h3> Total Room Service Orders for Today : <span class="todays-room-service-orders"></span></span></h3>
+          <h3> Total Room Service Orders for <span class="order-default-date"> Today </span> : <span class="todays-room-service-orders"></span></span></h3>
           <table class="orders-table">
               <thead>
                 <tr>
                   <th> Customer ID</th>
+                  <th> Customer Name</th>
                   <th> Food </th>
                   <th> Cost</th>
                 </tr>
@@ -91,6 +129,13 @@
               <tbody id="table-order-data">
               </tbody>
             </table> 
+            <form>
+            <div class="search-by-date">
+                <label for="calendar">Select a date to see order information for that date </label>
+                <input type="date" id="calendar-orders-default" name="calendar-input" min="2019-07-23" max="2019-10-31">
+                <button class="order-date-default-btn">See Orders</button>
+              </div>
+            </form>
       </section>
       <section id="orders-customer-selected" style="display:none"></section>
       </main> 

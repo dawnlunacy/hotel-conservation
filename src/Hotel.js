@@ -12,6 +12,7 @@ class Hotel {
     this.bookings = bookings.sort((a, b) => a.date.localeCompare(b.date));
     console.log(this.bookings)
     this.roomServiceOrders = roomServiceOrders;
+    console.log(this.roomServiceOrders.sort((a, b) => a.date.localeCompare(b.date)));
     this.todaysDate;
     this.currentCustomer;
   }
@@ -102,6 +103,20 @@ class Hotel {
     let todaysBookedRooms = this.findBookedRoomsByDate(date).length;
     let numberOfRoomsAvailableToday = this.rooms.length - todaysBookedRooms;
     return numberOfRoomsAvailableToday;
+  }
+
+  findActualAvailableRoomsByDate(date = this.todayDate) {
+    let bookedRoomNumbersOnDate = this.findBookedRoomsByDate(date).map(room => room.roomNumber);
+    let availableRooms = this.rooms.reduce((acc, currentRoom) => {
+        if (!bookedRoomNumbersOnDate.includes(currentRoom.number)) {
+            acc.push(currentRoom)
+        }
+        return acc
+    }, [])
+console.log("answer", availableRooms)
+    console.log("bookedRooms", bookedRoomNumbersOnDate);
+    return availableRooms;
+  
   }
 
   findRoomServiceOrdersByDate(date = this.todaysDate) {

@@ -49,15 +49,34 @@ const domUpdates =  {
     }
   },
 
-  loadOrderTable(hotel) {
+  loadOrderTableMain(hotel) {
     let orderData = hotel.findRoomServiceOrdersByDate();
+    $('.todays-room-service-orders-main').text(orderData.length);
+    const orderTableBodyMain = $('#table-order-data-main');
+    let dataHtml = '';
+    orderData.forEach((order) => {
+      let customer = hotel.findCustomerById(order.userID)
+      dataHtml += `<tr><td>${order.userID}</td><td>${customer.name}</td><td>${order.food}</td><td> $${order.totalCost}</td></tr>`
+    })
+    orderTableBodyMain.append(dataHtml)
+  },
+
+  loadOrderTableDefault(hotel, date = hotel.findTodaysDate()) {
+    let orderData = hotel.findRoomServiceOrdersByDate(date);
     $('.todays-room-service-orders').text(orderData.length);
     const orderTableBody = $('#table-order-data');
     let dataHtml = '';
     orderData.forEach((order) => {
-      dataHtml += `<tr><td>${order.userID}</td><td>${order.food}</td><td> $${order.totalCost}</td></tr>`
+      let customer = hotel.findCustomerById(order.userID)
+      dataHtml += `<tr><td>${order.userID}</td><td>${customer.name}</td><td>${order.food}</td><td> $${order.totalCost}</td></tr>`
     })
     orderTableBody.append(dataHtml)
+  },
+
+  prepOrderTableDefault(date) {
+    $('.todays-room-service-orders').text(' ');
+    $('#table-order-data').text('')
+    $('.order-default-date').text(date)
   },
 
   loadBookingsTable(hotel) {
@@ -67,12 +86,34 @@ const domUpdates =  {
     let dataHtml = '';
     bookingData.forEach((booking) => {
       let customer = hotel.findCustomerById(booking.userID)
-      console.log(booking.roomNumber)
       let costOfRoom = hotel.findCostOfRoom(booking.roomNumber);
-      console.log(costOfRoom)
       dataHtml += `<tr><td>${booking.userID}</td><td>${customer.name}</td><td> ${booking.roomNumber}</td><td> $${costOfRoom}</td>`
     })
     bookingTableBody.append(dataHtml);
+  },
+
+  prepBookingsTableDefault(date) {
+    $('.todays-bookings-details').text(' ');
+    $('#rooms-available-data').text('');
+    $('.rooms-available-default-date').text(date)
+  },
+
+  loadAvailableRoomsTableDefault(hotel, date = hotel.findTodaysDate()) {
+    let availableRoomData = hotel.findActualAvailableRoomsByDate(date);
+    console.log("rooms", availableRoomData)
+    $('.total-rooms-available-default').text(availableRoomData.length);
+    const availableRoomsTableBody = $('#rooms-available-data');
+    let dataHtml = '';
+    availableRoomData.forEach((room) => {
+      dataHtml += `<tr><td>${room.number}</td><td>${room.roomType}</td><td>${room.bidet}</td><td> ${room.numBeds}</td><td>${room.bedSize}</td><td> $${room.costPerNight}</td></tr>`
+    })
+    availableRoomsTableBody.append(dataHtml);
+  },
+
+  setDefaultValueForCalendars() {
+    let dateControls = document.querySelectorAll('input[type="date"]');
+    let today = new Date().toISOString().slice(0, 10)
+    dateControls.forEach(control => control.value = today);
   }
 }
 
