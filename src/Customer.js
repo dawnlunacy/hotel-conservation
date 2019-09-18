@@ -32,11 +32,9 @@ class Customer {
   }
 
   addBooking(date, roomNumber) {
-    console.log("BEFORE ANYTHING", this.bookings)
-    let booking = new Booking(this.id, date, roomNumber);
-    console.log("DID I MAKE AN INSTANCE?", booking)
+    let roomNumberInt = parseInt(roomNumber)
+    let booking = new Booking(this.id, date, roomNumberInt);
     this.bookings.push(booking);
-    console.log("BOOKING MADE?", this.bookings)
     return booking;
   }
 

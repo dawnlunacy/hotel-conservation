@@ -145,6 +145,7 @@ const domUpdates =  {
     const CurrentBookingsInfo = $('#current-bookings-customer-data');
     let dataHtml = '';
     currentBookings.forEach((booking) => {
+      console.log("Booooooking", booking)
       dataHtml += `<tr><td>${booking.userID}</td><td>${booking.date}</td><td>${booking.roomNumber}</td><td><button class="cancel ${booking.date}" id=${booking.roomNumber}> Cancel</button></td><td><button class="change ${booking.date}" id=${booking.roomNumber}> Change</button></td><td><button class="order ${booking.date}" id=${booking.roomNumber}> Order</button></td>`
     })
     CurrentBookingsInfo.append(dataHtml);
@@ -223,4 +224,3 @@ const domUpdates =  {
 }
 
 export default domUpdates
-
