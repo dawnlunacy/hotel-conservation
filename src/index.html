@@ -127,6 +127,33 @@
             <p> Viewing information for <span class="customer-name"></span></p>
             <p> Does Customer Have A Room Booked For Today? <span class="customer-booking-today-boolean"></span></p>
             <button class="book-room-today-btn"> Book Room For Today</button>
+            <div class="select-room-by-type" style="display:none">
+                <p> Please Select Room Type To See Availability </p>
+              <select id="room-type-select-dropdown">
+                  <option value="single room">single room</option>
+                  <option value="suite">suite</option>
+                  <option value="junior suite">junior suite</option>
+                  <option value="residential suite">residential suite</option>
+                  <option value="all">all available</option>
+              </select>
+              </div>
+              <div class="display-filtered-room-available-today" style="display:none">
+                  <h3> Total Rooms Available For <span class="rooms-available-filter-date"> Today </span> : <span class="total-rooms-available-filter"></span></span></h3>
+                  <table class="rooms-available-filter-table">
+                      <thead>
+                        <tr>
+                          <th> Room Number </th>
+                          <th> Room Type </th>
+                          <th> Has Bidet </th>
+                          <th> Number of Beds </th>
+                          <th> Bed Size </th>
+                          <th> Cost Per Night </th>
+                        </tr>
+                      </thead>
+                      <tbody id="rooms-available-filter-data">
+                      </tbody>
+                    </table> 
+              </div>
             <p> Total current bookings: <span class="current-bookings-total-number"></span></p>
             <p> All current booking information : </p>
             <table class="current-booking-customer-selected-table">

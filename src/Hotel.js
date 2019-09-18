@@ -115,10 +115,15 @@ class Hotel {
       }
       return acc
     }, [])
-    console.log("answer", availableRooms)
-    console.log("bookedRooms", bookedRoomNumbersOnDate);
     return availableRooms;
-  
+  }
+
+  findActualAvailableRoomsByType(roomType, date) {
+    let availableRooms = this.findActualAvailableRoomsByDate(date);
+    if (roomType !== "all") {
+      availableRooms = availableRooms.filter(data => data.roomType === roomType)
+    }
+    return availableRooms;
   }
 
   findRoomServiceOrdersByDate(date = this.todaysDate) {

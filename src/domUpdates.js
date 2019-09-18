@@ -188,6 +188,26 @@ const domUpdates =  {
     hotel.currentCustomer.cancelBooking(date, roomNumber)
     console.log("dateRecieve", date)
     console.log("roomNumberRecieved", roomNumber)
+  },
+
+  loadAvailableRoomsFilteredForCustomer(hotel, roomType, date = hotel.findTodaysDate()) {
+    this.prepAvailableRoomFilteredTable();
+    let availableRoomData = hotel.findActualAvailableRoomsByType(roomType, date);
+    $('.display-filtered-room-available-today').show()
+    $('.rooms-available-filter-date').text(date);
+    $('.total-rooms-available-filter').text(availableRoomData.length);
+    const availableRoomsTableBody = $('#rooms-available-filter-data');
+    let dataHtml = '';
+    availableRoomData.forEach((room) => {
+      dataHtml += `<tr><td>${room.number}</td><td>${room.roomType}</td><td>${room.bidet}</td><td> ${room.numBeds}</td><td>${room.bedSize}</td><td> $${room.costPerNight}</td></tr>`
+    })
+    availableRoomsTableBody.append(dataHtml);
+  },
+
+  prepAvailableRoomFilteredTable() {
+    $('#rooms-available-filter-data').text('')
+    $('.display-filtered-room-available-today').hide();
+
   }
 
 

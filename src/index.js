@@ -159,5 +159,18 @@ $(function() {
     domUpdates.loadCurrentBookingHistoryForCustomer(hotel)
   })
 
+
+  $('.book-room-today-btn').on('click', function(e) {
+    e.preventDefault();
+    $('.select-room-by-type').show()
+  })
+
+  $('#room-type-select-dropdown').on('change', function(e) {
+    e.preventDefault();
+    console.log("selectTYPE", $('#room-type-select-dropdown option:selected').val());
+    let roomType = $('#room-type-select-dropdown option:selected').val()
+    domUpdates.loadAvailableRoomsFilteredForCustomer(hotel, roomType)
+  })
+
 });
 
