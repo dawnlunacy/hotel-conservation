@@ -14,6 +14,7 @@ import './css/base.scss';
 import './images/turing-logo.png'
 import './images/plant.svg'
 
+
 let hotel;
 
 let usersAPICall = fetch("https://fe-apps.herokuapp.com/api/v1/overlook/1904/users/users");
@@ -53,7 +54,10 @@ $(function() {
     let $tabLabel = $(this).closest('.tab-labels');
 
     let $tabToHideId = '#' + $tabLabel.find('.tabs li.active').attr('rel') + '-default'
+    let $tabToHideId2 = '#' + $tabLabel.find('.tabs li.active').attr('rel') + '-customer-selected'
     $($tabToHideId).hide() 
+    $($tabToHideId2).hide()
+    
 
     $tabLabel.find('.tabs li.active').removeClass('active');
     $(this).addClass('active');
@@ -63,23 +67,49 @@ $(function() {
     $tabLabel.find('.tabLabel-active').slideToggle(200, showCurrentTab());
 
     function showCurrentTab() {
-      $(this).removeClass('active');
-
-      let $tabToShowId = '#' + $tabToShow + '-default'
-      $($tabToShowId).slideDown(200, function() {
-        $(this).addClass('active');
-      });
+      if ($('.guide-display').text() === ' Welcome Admin ') {
+        let $tabToShowId = '#' + $tabToShow + '-default'
+        $($tabToShowId).slideDown(200, function() {
+          $(this).addClass('active');
+        });
+      }
+      if ($('.guide-display').text() !== ' Welcome Admin ' || $tabToShow === 'main' || $tabToShow === 'customers') {
+        let $tabToShowId = '#' + $tabToShow + '-default'
+        $($tabToShowId).slideDown(200, function() {
+          $(this).addClass('active');
+        });
+      } 
+      if ($('.guide-display').text() !== ' Welcome Admin ' && $tabToShow === 'rooms') {
+        let $tabToHideId = '#' + $tabLabel.find('.tabs li.active').attr('rel') + '-default'
+        $($tabToHideId).hide() 
+        let $tabToShowId = '#' + $tabToShow + '-customer-selected'
+        $($tabToShowId).slideDown(200, function() {
+          $(this).addClass('active');
+        });
+      }
+      if ($('.guide-display').text() !== ' Welcome Admin ' && $tabToShow === 'orders') {
+        let $tabToHideId = '#' + $tabLabel.find('.tabs li.active').attr('rel') + '-default'
+        $($tabToHideId).hide() 
+        let $tabToShowId = '#' + $tabToShow + '-customer-selected'
+        $($tabToShowId).slideDown(200, function() {
+          $(this).addClass('active');
+        });
+      }
+      
     }
   })
 
   $('#customer-select-dropdown').on('change', function() {
     let name = (this.value);
-    domUpdates.customerSelected(hotel, name)
+    domUpdates.customerSelected(hotel, name);
+    domUpdates.loadOrderTableCustomerSelected(hotel);
+    domUpdates.loadCurrentBookingHistoryForCustomer(hotel);
+    domUpdates.loadPastBookingHistoryForCustomer(hotel);
   });
 
   $('.new-user-btn').on('click', function() {
-    let name = $('.new-user-input').val()
-    domUpdates.newCustomerEntered(hotel, name)
+    let name = $('.new-user-input').val();
+    domUpdates.newCustomerEntered(hotel, name);
     domUpdates.appendDropDownList(hotel);
   })
 
@@ -88,7 +118,6 @@ $(function() {
     let dd = String(date.getDate()).padStart(2, '0');
     let mm = String(date.getMonth() + 1).padStart(2, '0');
     let yyyy = date.getFullYear();
-    console.log([yyyy, mm, dd].join('/'));
     let dateSelected = [yyyy, mm, dd].join('/');
     return dateSelected;
   })
@@ -121,20 +150,42 @@ $(function() {
     return dateSelected;
   })
 
-//   $('#calendar-booking-default').on('click', function(e) {
-//     e.preventDefault();
-//     let fixedDate = $('.calendar-booking-default').val().replace(/-/g, '\/')
-//     let date = new Date(fixedDate);
-//     let dateString = date.toString().split(' ').slice(0, 4).join(' ');
-//     let dd = String(date.getDate()).padStart(2, '0');
-//     let mm = String(date.getMonth() + 1).padStart(2, '0');
-//     let yyyy = date.getFullYear();
-//     let dateSelected = [yyyy, mm, dd].join('/');
-//     domUpdates.prepOrderTableDefault(dateString);
-//     domUpdates.loadOrderTableDefault(hotel, dateSelected)
-//     return dateSelected;
-//   })
+  $('#current-bookings-customer-data').on('click', '.cancel', function(e) {
+    e.preventDefault();
+    let date = $(this)[0].classList[1];
+    let roomNumber = $(this)[0].id;
+    domUpdates.cancelCustomerBookings(hotel, date, roomNumber);
+    domUpdates.loadCurrentBookingHistoryForCustomer(hotel);
+    domUpdates.loadBookingsTable(hotel);
+    domUpdates.appendMainTabDefault(hotel);
+  })
 
+
+  $('.book-room-today-btn').on('click', function(e) {
+    e.preventDefault();
+    $('.select-room-by-type').show()
+  })
+
+  $('#room-type-select-dropdown').on('change', function(e) {
+    e.preventDefault();
+    let roomType = $('#room-type-select-dropdown option:selected').val()
+    domUpdates.loadAvailableRoomsFilteredForCustomer(hotel, roomType)
+  })
+
+  $('#rooms-available-filter-data').on('click', '.book', function(e) {
+    e.preventDefault();
+    let date = $(this)[0].classList[1];
+    let roomNumber = $(this)[0].id;
+    domUpdates.addCustomerBookings(hotel, date, roomNumber);
+    domUpdates.loadCurrentBookingHistoryForCustomer(hotel);
+    domUpdates.loadBookingsTable(hotel);
+    domUpdates.appendMainTabDefault(hotel);
+    
+
+
+  
+
+  })
 
 });
 

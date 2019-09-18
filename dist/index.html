@@ -14,7 +14,7 @@
     <div> <img src="./images/plant.svg" alt="Hotel Conservation Management System green leaves logo" class="logo">
       <h2> HCMS </h2> </div>
     <h3> <span class="guide-display"> Welcome Admin </span></h3>
-    <h4> <span class="todays-date"></span></h4>
+    <h4> Friday Sept 13 2019 </h4>
     </header>
 
     
@@ -72,7 +72,7 @@
                 </table> 
           </div>
       </section>
-      <!-- <section id="main-customer-selected" style="display:none"> </section> -->
+      <section id="main-customer-selected" style="display:none"> </section>
       <section id="customers-default" style="display:none"> 
         <div class="customer-prompt-title">
           <h4>Please Select or Create a Customer To View Their Information</h4> 
@@ -89,9 +89,7 @@
         </div> 
       </div>
       </section>
-      <section id="customers-customer-selected" style="display:none">
-      <!-- <p> Viewing information for <span class="customer-name"></span></p>  -->
-    </section>
+      <section id="customers-customer-selected" style="display:none"> customer </section>
       <section id="rooms-default" style="display:none">  
           <h3> Greatest Availability for Booking is on :</h3>
           <ul class="greatest-availability-date">
@@ -122,73 +120,7 @@
               </tbody>
             </table> 
        </section>
-      <section id="rooms-customer-selected" style="display:none"> 
-        <div>
-            <p> Viewing information for <span class="customer-name"></span></p>
-            <p> Does Customer Have A Room Booked For Today? <span class="customer-booking-today-boolean"></span></p>
-            <button class="book-room-today-btn"> Book Room For Today</button>
-            <div class="select-room-by-type" style="display:none">
-                <p> Please Select Room Type To See Availability </p>
-              <select id="room-type-select-dropdown">
-                  <option value="single room">single room</option>
-                  <option value="suite">suite</option>
-                  <option value="junior suite">junior suite</option>
-                  <option value="residential suite">residential suite</option>
-                  <option value="all">all available</option>
-              </select>
-              </div>
-              <div class="display-filtered-room-available-today" style="display:none">
-                  <h3> Total Rooms Available For <span class="rooms-available-filter-date"> Today </span> : <span class="total-rooms-available-filter"></span></span></h3>
-                  <table class="rooms-available-filter-table">
-                      <thead>
-                        <tr>
-                          <th> Room Number </th>
-                          <th> Room Type </th>
-                          <th> Has Bidet </th>
-                          <th> Number of Beds </th>
-                          <th> Bed Size </th>
-                          <th> Cost Per Night </th>
-                          <th> Book Room </th>
-                        </tr>
-                      </thead>
-                      <tbody id="rooms-available-filter-data">
-                      </tbody>
-                    </table> 
-              </div>
-            <p> Total current bookings: <span class="current-bookings-total-number"></span></p>
-            <p> All current booking information : </p>
-            <table class="current-booking-customer-selected-table">
-                <thead>
-                  <tr>
-                    <th> Customer ID </th>
-                    <th> Date </th>
-                    <th> Room Number </th>
-                    <th> Cancel </th>
-                    <th> Change </th>
-                    <th> Room Service </th>
-                  </tr>
-                </thead>
-                <tbody id="current-bookings-customer-data">
-                </tbody>
-              </table> 
-         </div>
-        <div>
-        <p> Viewing information for <span class="customer-name"></span></p>
-        <p> Total past bookings: <span class="past-bookings-total-number"></span></p>
-        <p> All past booking information : </p>
-        <table class="past-booking-customer-selected-table">
-            <thead>
-              <tr>
-                <th> Customer ID </th>
-                <th> Date </th>
-                <th> Room Number </th>
-              </tr>
-            </thead>
-            <tbody id="past-bookings-customer-data">
-            </tbody>
-          </table> 
-        </div>
-      </section>
+      <section id="rooms-customer-default" style="display:none"></section>
       <section id="orders-default" style="display:none"> 
           <h3> Total Room Service Orders for <span class="order-default-date"> Today </span> : <span class="todays-room-service-orders"></span></span></h3>
           <table class="orders-table">
@@ -211,28 +143,11 @@
               </div>
             </form>
       </section>
-      <section id="orders-customer-selected" style="display:none">
-        <p> Viewing information for <span class="customer-name"></span></p>
-        <h3> Total Room Service Orders Ever : <span class="customer-order-history-total"></span></h3>
-        <h3> Total Spent On Room Service Orders Ever : <span class="customer-order-history-cost"></span></h3>
-        <table class="orders-table-customer-selected">
-          <thead>
-            <tr>
-              <th> Customer ID </th>
-              <th> Date Of Order </th>
-              <th> Food </th>
-              <th> Cost</th>
-            </tr>
-          </thead>
-          <tbody id="table-order-customer-data">
-          </tbody>
-        </table> 
-      </section>
+      <section id="orders-customer-selected" style="display:none"></section>
       </main> 
     </div>
 <footer> Thank you for using Hotel Conservation Management Systems 2019 </footer>
 </div>
-  </body>
+  <script type="text/javascript" src="main.bundle.js"></script></body>
 </html>
  
-

@@ -10,9 +10,7 @@ class Hotel {
     this.customers = users;
     this.rooms = rooms;
     this.bookings = bookings.sort((a, b) => a.date.localeCompare(b.date));
-    console.log(this.bookings)
     this.roomServiceOrders = roomServiceOrders;
-    console.log(this.roomServiceOrders.sort((a, b) => a.date.localeCompare(b.date)));
     this.todaysDate;
     this.currentCustomer;
   }
@@ -108,15 +106,23 @@ class Hotel {
   findActualAvailableRoomsByDate(date = this.todayDate) {
     let bookedRoomNumbersOnDate = this.findBookedRoomsByDate(date).map(room => room.roomNumber);
     let availableRooms = this.rooms.reduce((acc, currentRoom) => {
-        if (!bookedRoomNumbersOnDate.includes(currentRoom.number)) {
-            acc.push(currentRoom)
-        }
-        return acc
+      if (!bookedRoomNumbersOnDate.includes(currentRoom.number)) {
+        acc.push(currentRoom)
+      }
+      return acc
     }, [])
-console.log("answer", availableRooms)
-    console.log("bookedRooms", bookedRoomNumbersOnDate);
     return availableRooms;
-  
+  }
+
+  findActualAvailableRoomsByType(roomType, date) {
+    let availableRooms = this.findActualAvailableRoomsByDate(date);
+    if (roomType !== "all") {
+      availableRooms = availableRooms.filter(data => data.roomType === roomType)
+    }
+    if ( availableRooms.length === 0) {
+      availableRooms = this.findActualAvailableRoomsByDate(date);
+    }
+    return availableRooms;
   }
 
   findRoomServiceOrdersByDate(date = this.todaysDate) {
@@ -170,8 +176,7 @@ console.log("answer", availableRooms)
       if (bookingCountToday < finalDates.bookingsCounter ) {
         finalDates.date.splice(0, finalDates.date.length, bookingDate);
         finalDates.bookingsCounter = bookingCountToday
-      }
-      else if (bookingCountToday === finalDates.bookingsCounter ) {
+      } else if (bookingCountToday === finalDates.bookingsCounter ) {
         finalDates.date.splice(finalDates.date.length, 0, bookingDate)
         finalDates.bookingsCounter = bookingCountToday;
       }
@@ -202,6 +207,40 @@ console.log("answer", availableRooms)
   findCostOfRoom(roomNumber) {
     return this.rooms.filter(room => room.number === roomNumber)[0].costPerNight;
   }
+
+  findCurrentBookingsForCurrentCustomer() {
+    let stringDate = this.todaysDate;
+    let pastBookings = this.currentCustomer.bookings.filter(bookings => bookings.date >= stringDate);
+    return pastBookings
+  }
+
+  findPastBookingsForCurrentCustomer() {
+    let stringDate = this.todaysDate;
+    let pastBookings = this.currentCustomer.bookings.filter(bookings => bookings.date < stringDate);
+    return pastBookings
+  }
+
+  checkIfTodayHasBookingForCurrentCustomer() {
+    let stringDate = this.todaysDate;
+    let todaysBookings = this.currentCustomer.bookings.filter(bookings => bookings.date === stringDate);
+    if (todaysBookings.length >= 1) {
+      return "YES"
+    } else {
+      return "NO"
+    }
+  }
+
+  addBooking(booking) {
+    this.bookings.push(booking)
+  }
+
+  removeBooking(bookingToCancel) {
+    let findBookingToCancel = this.bookings.filter(booking => booking.userID === bookingToCancel[0].userID && booking.date === bookingToCancel[0].date && booking.roomNumber === bookingToCancel[0].roomNumber);
+    this.bookings = this.bookings.filter(booking => booking !== findBookingToCancel[0]);
+   
+  }
+
+  
 
   
 
