@@ -28,6 +28,8 @@ class Customer {
 
     // console.log("INSIDE CANCEL", this.bookings)
   }
+
+  
 }
 
 export default Customer

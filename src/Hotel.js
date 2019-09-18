@@ -172,8 +172,7 @@ class Hotel {
       if (bookingCountToday < finalDates.bookingsCounter ) {
         finalDates.date.splice(0, finalDates.date.length, bookingDate);
         finalDates.bookingsCounter = bookingCountToday
-      }
-      else if (bookingCountToday === finalDates.bookingsCounter ) {
+      } else if (bookingCountToday === finalDates.bookingsCounter ) {
         finalDates.date.splice(finalDates.date.length, 0, bookingDate)
         finalDates.bookingsCounter = bookingCountToday;
       }
@@ -215,6 +214,18 @@ class Hotel {
     let stringDate = this.todaysDate;
     let pastBookings = this.currentCustomer.bookings.filter(bookings => bookings.date < stringDate);
     return pastBookings
+  }
+
+  checkIfTodayHasBookingForCurrentCustomer() {
+    let stringDate = this.todaysDate;
+    let todaysBookings = this.currentCustomer.bookings.filter(bookings => bookings.date === stringDate);
+    console.log("todaysBooking", todaysBookings)
+    console.log("todaysBookingLength", todaysBookings.length)
+    if (todaysBookings.length >= 1) {
+      return "YES"
+    } else {
+      return "NO"
+    }
   }
 
   

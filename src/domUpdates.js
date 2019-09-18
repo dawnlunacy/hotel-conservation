@@ -133,6 +133,13 @@ const domUpdates =  {
 
   loadCurrentBookingHistoryForCustomer(hotel) {
     this.prepCurrentBookingsHistoryForCustomer();
+    let doesCustomerHaveBookingForToday = hotel.checkIfTodayHasBookingForCurrentCustomer();
+    if (doesCustomerHaveBookingForToday === "YES") {
+      $('.book-room-today-btn').attr("disabled", true);
+    } else {
+      $('.book-room-today-btn').attr("disabled", false);
+    }
+    $('.customer-booking-today-boolean').text(doesCustomerHaveBookingForToday)
     let currentBookings = hotel.findCurrentBookingsForCurrentCustomer();
     $('.current-bookings-total-number').text(currentBookings.length);
     const CurrentBookingsInfo = $('#current-bookings-customer-data');
@@ -144,7 +151,8 @@ const domUpdates =  {
   },
 
   prepCurrentBookingsHistoryForCustomer() {
-    $('#current-bookings-customer-data').text('')
+    $('#current-bookings-customer-data').text('');
+    $('.customer-booking-today-boolean').text('');
   },
 
   loadPastBookingHistoryForCustomer(hotel) {
