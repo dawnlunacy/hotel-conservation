@@ -67,7 +67,7 @@ describe('Hotel', () => {
 
   describe('findTodaysDate', () => {
     it('should return the current date on which the method was invoked', () => {
-      expect(hotel.findTodaysDate()).to.equal('2019/09/15')
+      expect(hotel.findTodaysDate()).to.equal('2019/09/18')
     });
   });
 
@@ -118,13 +118,13 @@ describe('Hotel', () => {
       expect(hotel.findCustomerBookingsInfoById(5)).to.eql([
         {
           userID: 5,
-          date: "2019/09/26",
-          roomNumber: 26
+          date: "2019/08/02",
+          roomNumber: 9
         },
         {
           userID: 5,
-          date: "2019/08/02",
-          roomNumber: 9
+          date: "2019/09/26",
+          roomNumber: 26
         }
       ])
     })
