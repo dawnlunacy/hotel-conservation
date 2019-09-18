@@ -193,8 +193,6 @@ const domUpdates =  {
   cancelCustomerBookings(hotel, date, roomNumber) {
     let bookingToCancel = hotel.currentCustomer.cancelBooking(date, roomNumber)
     hotel.removeBooking(bookingToCancel)
-    // this.loadBookingsTable(hotel);
-    // this.appendMainTabDefault(hotel);
   },
 
   loadAvailableRoomsFilteredForCustomer(hotel, roomType, date = hotel.findTodaysDate()) {
@@ -222,7 +220,6 @@ const domUpdates =  {
     $('.select-room-by-type').hide();
     $('.display-filtered-room-available-today').hide();
   }
-
 
 }
 
