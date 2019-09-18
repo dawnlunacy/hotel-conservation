@@ -222,10 +222,7 @@ class Hotel {
 
   checkIfTodayHasBookingForCurrentCustomer() {
     let stringDate = this.todaysDate;
-    console.log("bug", this.currentCustomer.bookings)
     let todaysBookings = this.currentCustomer.bookings.filter(bookings => bookings.date === stringDate);
-    console.log("todaysBooking", todaysBookings)
-    console.log("todaysBookingLength", todaysBookings.length)
     if (todaysBookings.length >= 1) {
       return "YES"
     } else {
@@ -235,6 +232,18 @@ class Hotel {
 
   addBooking(booking) {
     this.bookings.push(booking)
+  }
+
+  removeBooking(bookingToCancel) {
+    console.log("crazy", bookingToCancel[0])
+    console.log("how many BEFORE", this.bookings.length)
+    console.log("hmm", typeof bookingToCancel[0].userID)
+    let findBookingToCancel = this.bookings.filter(booking => booking.userID === bookingToCancel[0].userID && booking.date === bookingToCancel[0].date && booking.roomNumber === bookingToCancel[0].roomNumber);
+    this.bookings = this.bookings.filter(booking => booking !== findBookingToCancel[0]);
+    // let bookingToDelete = this.bookings.find(booking => booking.userID === bookingToCancel[0].userID && booking.date === bookingToCancel[0].date && booking.roomNumber === bookingToCancel[0].roomNumber)
+    // let bookingToDelete = this.bookings.findIndex(booking => booking === bookingToCancel[0])
+    // console.log("DELETE", bookingToDelete)
+    console.log("how many AFTER", this.bookings.length)
   }
 
   

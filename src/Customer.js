@@ -19,10 +19,11 @@ class Customer {
 
   cancelBooking(date, roomNumber) {
     let roomNumberEdit = parseInt(roomNumber)
+    console.log("INSIDE CANCEL BOOKING CUSTOMER BEFORE", this.bookings.length)
     let findBookingToCancel = this.bookings.filter(booking => booking.date === date && booking.roomNumber === roomNumberEdit);
-    this.bookings = this.bookings.filter(booking => booking !== findBookingToCancel[0])
-
-
+    this.bookings = this.bookings.filter(booking => booking !== findBookingToCancel[0]);
+    console.log("INSIDE CANCEL BOOKING CUSTOMER AFTER", this.bookings.length)
+    return findBookingToCancel;
 
   }
 

@@ -152,8 +152,11 @@ $(function() {
 
   $('#current-bookings-customer-data').on('click', '.cancel', function(e) {
     e.preventDefault();
-    domUpdates.cancelCustomerBookings(hotel, $(this)[0].classList[1], $(this)[0].id)
-    domUpdates.loadCurrentBookingHistoryForCustomer(hotel)
+    let date = $(this)[0].classList[1];
+    let roomNumber = $(this)[0].id;
+    domUpdates.cancelCustomerBookings(hotel, date, roomNumber);
+    domUpdates.loadCurrentBookingHistoryForCustomer(hotel);
+    // domUpdates.loadBookingsTable(hotel);
   })
 
 
