@@ -16,15 +16,13 @@
     <h3> <span class="guide-display"> Welcome Admin </span></h3>
     <h4> <span class="todays-date"></span></h4>
     </header>
-
+    
     
     <div class="tab-labels"> 
-        <form>
-            <div class="search-by-date">
-              <label for="calendar">Enter a date to see info </label>
-              <input type="date" id="calendar" name="calendar-input" min="2019-07-23" max="2019-10-31">
-            </div>
-          </form>
+        <div class="find-user">
+            <p> Select Customer </p>
+            <select id="customer-select-dropdown"></select>
+          </div>
       <ul class= "tabs">
         <li rel="main" class="active"> Main </li>
         <li rel="customers"> Customer </li>
@@ -72,16 +70,11 @@
                 </table> 
           </div>
       </section>
-      <!-- <section id="main-customer-selected" style="display:none"> </section> -->
       <section id="customers-default" style="display:none"> 
         <div class="customer-prompt-title">
-          <h4>Please Select or Create a Customer To View Their Information</h4> 
+          <h4>Please Select a Customer Above or Create a Customer Below To View Their Information</h4> 
         </div>
         <div class="find-customer">
-        <div class="find-user">
-          <p> Please Select Customer </p>
-        <select id="customer-select-dropdown"></select>
-        </div>
         <div class="new-user-intake" role="form">
           <p>Create a New Customer </p>
           <input class="new-user-input"type="text" name="name" placeholder=" Customer Name">
@@ -90,7 +83,6 @@
       </div>
       </section>
       <section id="customers-customer-selected" style="display:none">
-      <!-- <p> Viewing information for <span class="customer-name"></span></p>  -->
     </section>
       <section id="rooms-default" style="display:none">  
           <h3> Greatest Availability for Booking is on :</h3>

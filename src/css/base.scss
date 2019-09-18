@@ -137,6 +137,7 @@ th {
     h4 {
       width: 100%;
       font-size: 1.5em;
+      margin: 12%;
     }
 }
 
@@ -164,13 +165,13 @@ p {
 }
 
 .find-user {
-  margin-top: 50px;
+  margin: 10px;
 }
 
 .new-user-intake {
   font-size: 20px;
   font-family: Georgia, 'Times New Roman', Times, serif;
-  margin-top: 50px;
+  margin-top: 10px;
   display: flex;
   flex-direction: column;
   .new-user-input {
