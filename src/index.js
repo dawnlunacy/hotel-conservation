@@ -155,6 +155,8 @@ $(function() {
     console.log("clickityCLick", $(this)[0])
     console.log("clickityCLickClass", $(this)[0].classList[1])
     console.log("clickityCLickID", $(this)[0].id)
+    domUpdates.cancelCustomerBookings(hotel, $(this)[0].classList[1], $(this)[0].id)
+    domUpdates.loadCurrentBookingHistoryForCustomer(hotel)
   })
 
 });

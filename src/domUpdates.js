@@ -174,7 +174,15 @@ const domUpdates =  {
     let formatDate = date.toString().split(' ').slice(0, 4).join(' ');
     $('.todays-date').text(formatDate);
 
+  },
+
+  cancelCustomerBookings(hotel, date, roomNumber) {
+    hotel.currentCustomer.cancelBooking(date, roomNumber)
+    console.log("dateRecieve", date)
+    console.log("roomNumberRecieved", roomNumber)
   }
+
+
 }
 
 export default domUpdates
