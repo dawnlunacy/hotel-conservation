@@ -2,7 +2,8 @@
 
 ## A hotel management application designed to fit the every day technical needs for handling bookings, customers, and room service orders. 
 
-## This is a solo project by Lacy Rudd
+## This is a solo project by Lacy Rudd [github account](https://github.com/dawnlunacy) <br>
+[Github Repository Link](https://github.com/dawnlunacy/hotel-conservation/) 
 
 ## Clone This Repo To View
 
@@ -18,9 +19,10 @@
 1.JavaScript
 2.Webpack
 3.Sass
+4.Mocha & Chai
 
 #### Goals
-1. This project uses jquery and no additional libraries or frameworks
+1. This project uses jquery and no additional libraries or frameworks outside of mocha and chai
 1. This project implements a fetch to retrieve 4 APIs
 1. This project uses a significant amount of data and dom manipulation
 
@@ -29,9 +31,17 @@
 
 ## ScreenShots
 
-## Demo
+## Demo of Hotel Conservation Management Systems
+
+![HCMS Default Display Demo](https://github.com/dawnlunacy/hotel-conservation/blob/master/src/images/hotel-conservation-default-demo.mp4)
+
+![HCMS Default Display Calendar Selection Demo](https://github.com/dawnlunacy/hotel-conservation/blob/master/src/images/hs-cs-default-calendars.mp4)
+
+![HCMS Create Customer Demo](https://github.com/dawnlunacy/hotel-conservation/blob/master/src/images/hs-customer-creation.mp4)
+
+![HCMS Customer Bookings Demo](https://github.com/dawnlunacy/hotel-conservation/blob/master/src/images/hotel-conservation-cs-rooms.mp4)
 
 
-[GitHub Pages](https://pages.github.com/) is a great way to deploy your project to the web. Don't worry about this until your project is free of bugs and well tested!
 
-If you _are_ done, you can follow [this procedure](./gh-pages-procedure.md) to get your project live on GitHub Pages.
+## GitHub Pages
+[GitHub Pages](https://pages.github.com/) 
