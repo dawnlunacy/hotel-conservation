@@ -3,7 +3,6 @@
 @import 'variables';
 
 
-$primary-background: pink;
 $primary: #fffef6;
 * {
   box-sizing: border-box;
@@ -12,25 +11,25 @@ $primary: #fffef6;
 body {
   background-color: $primary;
   background: #fafafa;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   color: #333;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 header {
+  background-color: $primary-color;
+  color: white;
   display: flex;
+  font-size: 1.5em;
   justify-content: space-between;
   min-height: 20vh;
-  background-color: hsl(220, 31%, 33%);
-  font-size: 1.5em;
   padding: 5px;
-  color: white;
 }
 
 .logo {
-  width: 100px;
-  height: 100px;
   display: inline-block;
+  height: 100px;
   padding: 8px;
+  width: 100px;
 }
 
 h2 {
@@ -40,47 +39,38 @@ h2 {
 
 h4 {
   padding: 8px;
-  word-wrap: initial;
   width: 10%;
+  word-wrap: initial;
 }
 .tab-labels {
-  overflow: hidden;
   border: 2px solid green;
-  // background-color: limegreen;
   display: flex;
   justify-content: space-between;
+  overflow: hidden;
 }
 
-// .tabs {
-//   // float: right;
-//   // background-color: yellow;
-//   // display: flex;
-//   // justify-content: end;
-// }
-
 .tabs li {
-  list-style-type: none;
-  display: inline-block;
-  background: hsl(220, 31%, 33%);
-  margin: 5px;
-  padding: 5px 10px;
+  background: $primary-color;
   border-radius: 10px 10px 0 0; 
   color: whitesmoke;
-  font-size: 2em;
   cursor: pointer;
+  display: inline-block;
+  font-size: 2em;
+  list-style-type: none;
+  margin: 5px;
+  padding: 5px 10px;
     &:hover {
-      // background-color: hsla(150, 68%, 65%, 0.876)
-      background-color: hsl(136, 48%, 53%)
+      background-color: $tab-color;
     }
 }
 
 .tabs li.active {
-  background-color: hsl(136, 48%, 53%);
+  background-color: $tab-color;
 }
 
 .search-by-date {
-  display:flex;
   align-content: center;
+  display:flex;
   margin: 20px;
     label {
       font-size: 1.3em;
@@ -89,30 +79,30 @@ h4 {
 }
 
 main {
-  width: 100vw;
   height: 70vh;
+  width: 100vw;
 }
 
 #main-default {
+  align-items: center;
   display: flex;
   flex-direction: column;
-  align-items: center;
   text-align: center;
 }
 
 #orders-default {
-  display: flex;
   align-items: center;
+  display: flex;
   flex-direction: column;
   padding-top: 50px;
 }
 
 .orders-table {
   border-collapse: collapse;
-  width: 80%;
   font-family: Georgia, 'Times New Roman', Times, serif;
   margin-left: 10%;
   text-align: center;
+  width: 80%;
 }
 
 td, th {
@@ -128,15 +118,16 @@ th {
 }
 
 .customer-prompt-title {
-  display: flex;
-  justify-content: center;
   align-items: center;
+  display: flex;
+  height: 20vh;
+  justify-content: center;
   text-align: center;
   width: 100%;
-  height: 20vh;
     h4 {
-      width: 100%;
       font-size: 1.5em;
+      margin: 12%;
+      width: 100%;
     }
 }
 
@@ -150,66 +141,159 @@ th {
 }
 
 p {
-  margin: 0;
-  padding: 10px;
   font-size: 20px;
   font-weight: bold;
+  margin: 0;
+  padding: 10px;
 }
 
 #customer-select-dropdown {
-  width: 250px;
-  height: 50px;
-  font-size: 20px;
   font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: 20px;
+  height: 50px;
+  width: 250px;
 }
 
 .find-user {
-  margin-top: 50px;
+  margin: 10px;
 }
 
 .new-user-intake {
-  font-size: 20px;
-  font-family: Georgia, 'Times New Roman', Times, serif;
-  margin-top: 50px;
   display: flex;
   flex-direction: column;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: 20px;
+  margin-top: 10px;
   .new-user-input {
-    width: 250px;
-    height: 50px;
     border-radius: 5px;
-    text-align: center;
     font-size: 15px;
     font-weight: 500;
+    height: 50px;
     margin-bottom: 25px;
+    text-align: center;
+    width: 250px;
   }
 }
 
 .new-user-btn {
-  margin: 20px;
-  width: 225px;
-  height: 50px;
-  background-color: #7CB0F6;
-  opacity: 1;
+  background-color: $tertiary-color;
   border-radius: 25px;
+  cursor: pointer;
   display: block;
   font-size: 15px;
   font-weight: 700;
+  height: 50px;
+  margin: 20px;
+  opacity: 1;
+  width: 225px;
+   &:hover {
+     transform: scale(1.2);
+   }
 }
 
 #page-container {
-  position: relative;
   min-height: 100vh;
+  position: relative;
 }
 
 #content-wrap {
   padding-bottom: 50px;    
 }
 
+.bookings-default-table {
+  @extend .orders-table;
+}
+
+#rooms-default {
+  @extend #main-default;
+}
+
+.rooms-available-default-table {
+  @extend .orders-table;
+  margin: auto;
+}
+
+#rooms-customer-selected {
+  @extend #main-default;
+}
+
+.rooms-available-filter-table {
+  @extend .rooms-available-default-table;
+}
+
+.current-booking-customer-selected-table {
+  @extend .rooms-available-default-table;
+}
+
+.past-booking-customer-selected-table {
+  @extend .rooms-available-default-table;
+}
+
+#orders-customer-selected {
+  @extend #main-default;
+}
+
+.orders-table-customer-selected {
+  @extend .rooms-available-default-table;
+}
+
+.available-booking-date-default-btn {
+  border-radius: 5px;
+  border: 2px solid $secondary-color;
+  box-shadow: 0px 2px 2px;
+  cursor: pointer;
+  font: bold;
+  height: 35px;
+  margin: 9px;
+  padding: 1px 15px;
+  &:hover {
+    background-color: $secondary-color;
+    transform: scale(1.1);
+  };
+}
+
+.book-room-today-btn {
+  border-radius: 5px;
+  border: 2px solid $tertiary-color;
+  box-shadow: 0px 2px 2px;
+  cursor: pointer;
+  font: bold;
+  height: 35px;
+  margin: 9px;
+  padding: 1px 15px;
+}
+
+.cancel {
+  @extend .book-room-today-btn;
+  border-radius: 2px;
+  border: 1px solid red;
+}
+
+.book {
+  @extend .book-room-today-btn;
+  border-radius: 2px;
+  border: 1px solid $secondary-color;
+}
+
+.order-date-default-btn {
+  @extend .available-booking-date-default-btn;
+}
+
+input {
+  border-radius: 2px;
+  border: 2px solid $tertiary-color;
+}
+
 footer {
-  position: absolute;
-  width: 100%;
+  background: #4FC16E;
+  color: black;
   height: 50px;
-  background: turquoise;
-  margin-top: 100%;
+  margin-top: 500vh;
+  position: absolute;
+  text-align: center;
+  width: 100%;
+   p {
+     font-size: 1em;
+   }
 }
 
