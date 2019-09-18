@@ -186,10 +186,13 @@ $(function() {
     let foodItem = $(this)[0].classList[1];
     let costConvert = parseFloat(($(this)[0].id));
     let costRound = parseFloat(costConvert.toFixed(2))
-
-    hotel.currentCustomer.addFoodOrder(date, foodItem, costRound);
+    let newRoomServiceOrder = hotel.currentCustomer.addFoodOrder(date, foodItem, costRound);
     domUpdates.loadOrderTableCustomerSelected(hotel);
     domUpdates.appendMainTabDefault(hotel);
+    $('.display-food-menu-order-today').hide();
+    hotel.roomServiceOrders.push(newRoomServiceOrder)
+    $('.add-room-order-today-btn').attr('disabled', true);
+    domUpdates.loadOrderTableMain(hotel);
   });
 
 });

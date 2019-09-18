@@ -67,6 +67,7 @@ const domUpdates =  {
   },
 
   loadOrderTableDefault(hotel, date = hotel.findTodaysDate()) {
+    this.prepOrderTableDefault(date);
     let orderData = hotel.findRoomServiceOrdersByDate(date);
     $('.todays-room-service-orders').text(orderData.length);
     const orderTableBody = $('#table-order-data');
