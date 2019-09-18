@@ -10,9 +10,7 @@ class Hotel {
     this.customers = users;
     this.rooms = rooms;
     this.bookings = bookings.sort((a, b) => a.date.localeCompare(b.date));
-    console.log(this.bookings)
     this.roomServiceOrders = roomServiceOrders;
-    console.log(this.roomServiceOrders.sort((a, b) => a.date.localeCompare(b.date)));
     this.todaysDate;
     this.currentCustomer;
   }
@@ -38,14 +36,12 @@ class Hotel {
   findCustomerByName(name) {
     let currentUser = this.customers.find(customer => customer.name === name);
     this.currentCustomer = currentUser;
-    console.log("current", this.currentCustomer)
     return currentUser;
   }
 
   findCustomerById(id) {
     let currentUser = this.customers.find(customer => customer.id === id);
     this.currentCustomer = currentUser;
-    console.log("current", this.currentCustomer)
     return currentUser;
   }
 
@@ -122,6 +118,9 @@ class Hotel {
     let availableRooms = this.findActualAvailableRoomsByDate(date);
     if (roomType !== "all") {
       availableRooms = availableRooms.filter(data => data.roomType === roomType)
+    }
+    if ( availableRooms.length === 0) {
+      availableRooms = this.findActualAvailableRoomsByDate(date);
     }
     return availableRooms;
   }
@@ -223,6 +222,7 @@ class Hotel {
 
   checkIfTodayHasBookingForCurrentCustomer() {
     let stringDate = this.todaysDate;
+    console.log("bug", this.currentCustomer.bookings)
     let todaysBookings = this.currentCustomer.bookings.filter(bookings => bookings.date === stringDate);
     console.log("todaysBooking", todaysBookings)
     console.log("todaysBookingLength", todaysBookings.length)
@@ -231,6 +231,10 @@ class Hotel {
     } else {
       return "NO"
     }
+  }
+
+  addBooking(booking) {
+    this.bookings.push(booking)
   }
 
   

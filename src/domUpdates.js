@@ -199,7 +199,7 @@ const domUpdates =  {
     const availableRoomsTableBody = $('#rooms-available-filter-data');
     let dataHtml = '';
     availableRoomData.forEach((room) => {
-      dataHtml += `<tr><td>${room.number}</td><td>${room.roomType}</td><td>${room.bidet}</td><td> ${room.numBeds}</td><td>${room.bedSize}</td><td> $${room.costPerNight}</td></tr>`
+      dataHtml += `<tr><td>${room.number}</td><td>${room.roomType}</td><td>${room.bidet}</td><td> ${room.numBeds}</td><td>${room.bedSize}</td><td> $${room.costPerNight}</td><td><button class="book ${date}" id=${room.number}> Book </button></td></tr>`
     })
     availableRoomsTableBody.append(dataHtml);
   },
@@ -208,6 +208,15 @@ const domUpdates =  {
     $('#rooms-available-filter-data').text('')
     $('.display-filtered-room-available-today').hide();
 
+  },
+
+  addCustomerBookings(hotel, date, roomNumber) {
+    let booking = hotel.currentCustomer.addBooking(date, roomNumber);
+    hotel.addBooking(booking);
+    $('.select-room-by-type').hide();
+    $('.display-filtered-room-available-today').hide();
+    // $('.select-room-by-type').attr('display', false);
+    // $('.display-filtered-room-available-today').attr('display', false);
   }
 
 

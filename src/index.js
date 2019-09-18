@@ -172,5 +172,19 @@ $(function() {
     domUpdates.loadAvailableRoomsFilteredForCustomer(hotel, roomType)
   })
 
+  $('#rooms-available-filter-data').on('click', '.book', function(e) {
+    e.preventDefault();
+    let date = $(this)[0].classList[1];
+    let roomNumber = $(this)[0].id;
+    console.log("BOOKTHISROOM", $(this)[0])
+    console.log("BOOKTHISROOMCLASSDATE", $(this)[0].classList[1])
+    console.log("BOOKTHISROOMID", $(this)[0].id)
+    domUpdates.addCustomerBookings(hotel, date, roomNumber);
+    domUpdates.loadCurrentBookingHistoryForCustomer(hotel);
+    // $('.select-room-by-type').attr('display', false);
+    // $('.display-filtered-room-available-today').attr('display', false);
+
+  })
+
 });
 

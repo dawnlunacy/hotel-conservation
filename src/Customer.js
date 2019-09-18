@@ -1,3 +1,5 @@
+import Booking from "./Booking";
+
 class Customer {
   constructor(name, id, bookings = [], roomServiceOrders = []) {
     this.name = name;  
@@ -27,6 +29,15 @@ class Customer {
     console.log("FINALBOOKINGS", this.bookings)
 
     // console.log("INSIDE CANCEL", this.bookings)
+  }
+
+  addBooking(date, roomNumber) {
+    console.log("BEFORE ANYTHING", this.bookings)
+    let booking = new Booking(this.id, date, roomNumber);
+    console.log("DID I MAKE AN INSTANCE?", booking)
+    this.bookings.push(booking);
+    console.log("BOOKING MADE?", this.bookings)
+    return booking;
   }
 
   
