@@ -46,17 +46,9 @@ h4 {
 .tab-labels {
   overflow: hidden;
   border: 2px solid green;
-  // background-color: limegreen;
   display: flex;
   justify-content: space-between;
 }
-
-// .tabs {
-//   // float: right;
-//   // background-color: yellow;
-//   // display: flex;
-//   // justify-content: end;
-// }
 
 .tabs li {
   list-style-type: none;
@@ -189,12 +181,16 @@ p {
   margin: 20px;
   width: 225px;
   height: 50px;
-  background-color: #7CB0F6;
+  background-color: $tertiary-color;
   opacity: 1;
   border-radius: 25px;
   display: block;
   font-size: 15px;
   font-weight: 700;
+  cursor: pointer;
+   &:hover {
+     transform: scale(1.2);
+   }
 }
 
 #page-container {
@@ -206,11 +202,100 @@ p {
   padding-bottom: 50px;    
 }
 
+.bookings-default-table {
+  @extend .orders-table;
+}
+
+#rooms-default {
+  @extend #main-default;
+}
+
+.rooms-available-default-table {
+  @extend .orders-table;
+  margin: auto;
+}
+
+#rooms-customer-selected {
+  @extend #main-default;
+}
+
+.rooms-available-filter-table {
+  @extend .rooms-available-default-table;
+}
+
+.current-booking-customer-selected-table {
+  @extend .rooms-available-default-table;
+}
+
+.past-booking-customer-selected-table {
+  @extend .rooms-available-default-table;
+}
+
+#orders-customer-selected {
+  @extend #main-default;
+}
+
+.orders-table-customer-selected {
+  @extend .rooms-available-default-table;
+}
+
+.available-booking-date-default-btn {
+  border-radius: 5px;
+  border: 2px solid $secondary-color;
+  cursor: pointer;
+  padding: 1px 15px;
+  margin: 9px;
+  height: 35px;
+  box-shadow: 0px 2px 2px;
+  font: bold;
+  &:hover {
+    background-color: $secondary-color;
+    transform: scale(1.1);
+  };
+}
+
+.book-room-today-btn {
+  border-radius: 5px;
+  border: 2px solid $tertiary-color;
+  cursor: pointer;
+  padding: 1px 15px;
+  margin: 9px;
+  height: 35px;
+  box-shadow: 0px 2px 2px;
+  font: bold;
+}
+
+.cancel {
+  @extend .book-room-today-btn;
+  border-radius: 2px;
+  border: 1px solid red;
+}
+
+.book {
+  @extend .book-room-today-btn;
+  border-radius: 2px;
+  border: 1px solid $secondary-color;
+}
+
+.order-date-default-btn {
+  @extend .available-booking-date-default-btn;
+}
+
+input {
+  border-radius: 2px;
+  border: 2px solid $tertiary-color;
+}
+
 footer {
   position: absolute;
   width: 100%;
   height: 50px;
-  background: turquoise;
-  margin-top: 100%;
+  background: #4FC16E;
+  margin-top: 500vh;
+  color: black;
+  text-align: center;
+   p {
+     font-size: 1em;
+   }
 }
 
