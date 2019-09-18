@@ -119,6 +119,7 @@
             <p> Viewing information for <span class="customer-name"></span></p>
             <p> Does Customer Have A Room Booked For Today? <span class="customer-booking-today-boolean"></span></p>
             <button class="book-room-today-btn"> Book Room For Today</button>
+            <button class="add-room-order-today-btn"> Add Room Order For Today</button>
             <div class="select-room-by-type" style="display:none">
                 <p> Please Select Room Type To See Availability </p>
               <select id="room-type-select-dropdown">
@@ -147,6 +148,20 @@
                       </tbody>
                     </table> 
               </div>
+              <div class="display-food-menu-order-today" style="display:none">
+                <h3> Room Service Menu For <span class="menu-order-date"> Today </span></h3>
+                <table class="food-menu-table">
+                    <thead>
+                      <tr>
+                        <th> Food Item </th>
+                        <th> Cost </th>
+                        <th> Order  </th>
+                      </tr>
+                    </thead>
+                    <tbody id="menu-data">
+                    </tbody>
+                  </table> 
+            </div>
             <p> Total current bookings: <span class="current-bookings-total-number"></span></p>
             <p> All current booking information : </p>
             <table class="current-booking-customer-selected-table">

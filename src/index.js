@@ -38,6 +38,8 @@ function instantiateHotel(users, bookings, roomServices, rooms) {
   domUpdates.loadBookingsTable(hotel);
   domUpdates.loadAvailableRoomsTableDefault(hotel);
   domUpdates.setDefaultValueForCalendars();
+  hotel.makeMenu();
+  
 }
 
 $(function() {
@@ -171,6 +173,15 @@ $(function() {
     domUpdates.loadCurrentBookingHistoryForCustomer(hotel);
     domUpdates.loadBookingsTable(hotel);
     domUpdates.appendMainTabDefault(hotel);
+
+    $('.add-room-order-today-btn').on('click', function(e) {
+      e.preventDefault();
+      domUpdates.loadMenu(hotel);
+      // $('display-food-menu-order-today').show();
+      console.log("INSIDE BTN");
+    })
+
+
     
 
 

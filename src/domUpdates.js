@@ -97,7 +97,7 @@ const domUpdates =  {
     $('.order-default-date').text(date);
   },
 
-  prepOrderTableCustomerSelected() {;
+  prepOrderTableCustomerSelected() {
   },
 
   loadBookingsTable(hotel) {
@@ -141,8 +141,10 @@ const domUpdates =  {
     let doesCustomerHaveBookingForToday = hotel.checkIfTodayHasBookingForCurrentCustomer();
     if (doesCustomerHaveBookingForToday === "YES") {
       $('.book-room-today-btn').attr("disabled", true);
+      $('.add-room-order-today-btn').attr("disabled", false);
     } else {
       $('.book-room-today-btn').attr("disabled", false);
+      $('.add-room-order-today-btn').attr("disabled", true);
     }
     $('.customer-booking-today-boolean').text(doesCustomerHaveBookingForToday)
     let currentBookings = hotel.findCurrentBookingsForCurrentCustomer();
@@ -218,7 +220,22 @@ const domUpdates =  {
     hotel.addBooking(booking);
     $('.select-room-by-type').hide();
     $('.display-filtered-room-available-today').hide();
-  }
+  },
+
+  loadMenu(hotel) {
+    let menuData = hotel.makeMenu();
+    console.log("menuData", menuData)
+    let menuDataKeys = Object.keys(menuData);
+    console.log("menuDataKeys", menuDataKeys)
+
+    $('.display-food-menu-order-today').show();
+    const menuTableBody = $('#menu-data');
+    let dataHtml = '';
+    menuDataKeys.forEach((key) => {
+      dataHtml += `<tr><td>${key}</td><td>${menuData[key]}</td><td><button class="order-food ${key}" id=${menuData[key]}> Order Food </button></td></tr>`
+    })
+    menuTableBody.append(dataHtml);
+  },
 
 }
 

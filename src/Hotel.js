@@ -240,7 +240,18 @@ class Hotel {
    
   }
 
+  makeMenu() {
+    let menu = this.roomServiceOrders.reduce((finalMenu, order) => {
+      if (!finalMenu[order.food]) {
+        finalMenu[order.food] = order.totalCost;
+      }
+      return finalMenu
+    }, {});
+    console.log("menu", menu)
+    return menu;
+  }
   
+
 
   
 
