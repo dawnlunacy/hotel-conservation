@@ -152,9 +152,6 @@ $(function() {
 
   $('#current-bookings-customer-data').on('click', '.cancel', function(e) {
     e.preventDefault();
-    console.log("clickityCLick", $(this)[0])
-    console.log("clickityCLickClass", $(this)[0].classList[1])
-    console.log("clickityCLickID", $(this)[0].id)
     domUpdates.cancelCustomerBookings(hotel, $(this)[0].classList[1], $(this)[0].id)
     domUpdates.loadCurrentBookingHistoryForCustomer(hotel)
   })
@@ -167,7 +164,6 @@ $(function() {
 
   $('#room-type-select-dropdown').on('change', function(e) {
     e.preventDefault();
-    console.log("selectTYPE", $('#room-type-select-dropdown option:selected').val());
     let roomType = $('#room-type-select-dropdown option:selected').val()
     domUpdates.loadAvailableRoomsFilteredForCustomer(hotel, roomType)
   })
@@ -176,13 +172,11 @@ $(function() {
     e.preventDefault();
     let date = $(this)[0].classList[1];
     let roomNumber = $(this)[0].id;
-    console.log("BOOKTHISROOM", $(this)[0])
-    console.log("BOOKTHISROOMCLASSDATE", $(this)[0].classList[1])
-    console.log("BOOKTHISROOMID", $(this)[0].id)
     domUpdates.addCustomerBookings(hotel, date, roomNumber);
     domUpdates.loadCurrentBookingHistoryForCustomer(hotel);
-    // $('.select-room-by-type').attr('display', false);
-    // $('.display-filtered-room-available-today').attr('display', false);
+    domUpdates.loadBookingsTable(hotel);
+
+  
 
   })
 

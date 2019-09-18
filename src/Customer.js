@@ -18,17 +18,12 @@ class Customer {
   }
 
   cancelBooking(date, roomNumber) {
-    console.log("typeOfDate", typeof date)
     let roomNumberEdit = parseInt(roomNumber)
-    console.log("typeOfNumber", typeof roomNumberEdit)
-    console.log("INSIDE BEFORE", this.bookings)
-    let findBookingToCancel = this.bookings.filter(booking => booking.date === date && booking.roomNumber === roomNumberEdit)
-    // let findGoodBookings = this.bookings.filter(booking => booking.date === date).filter(booking => booking.roomNumber === roomNumberEdit)
-    console.log("INSIDE FINDGOODBOOKINGS", findBookingToCancel)
+    let findBookingToCancel = this.bookings.filter(booking => booking.date === date && booking.roomNumber === roomNumberEdit);
     this.bookings = this.bookings.filter(booking => booking !== findBookingToCancel[0])
-    console.log("FINALBOOKINGS", this.bookings)
 
-    // console.log("INSIDE CANCEL", this.bookings)
+
+
   }
 
   addBooking(date, roomNumber) {

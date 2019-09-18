@@ -102,6 +102,7 @@ const domUpdates =  {
   },
 
   loadBookingsTable(hotel) {
+    this.prepMainTable();
     let bookingData = hotel.findBookedRoomsByDate();
     $('.todays-bookings-details').text(bookingData.length);
     const bookingTableBody = $('#bookings-default-table-data');
@@ -112,6 +113,11 @@ const domUpdates =  {
       dataHtml += `<tr><td>${booking.userID}</td><td>${customer.name}</td><td> ${booking.roomNumber}</td><td> $${costOfRoom}</td>`
     })
     bookingTableBody.append(dataHtml);
+  },
+
+  prepMainTable() {
+    $('.todays-bookings-details').text(' ');
+    $('#bookings-default-table-data').text(' ');
   },
 
   prepBookingsTableDefault(date) {
@@ -216,8 +222,6 @@ const domUpdates =  {
     hotel.addBooking(booking);
     $('.select-room-by-type').hide();
     $('.display-filtered-room-available-today').hide();
-    // $('.select-room-by-type').attr('display', false);
-    // $('.display-filtered-room-available-today').attr('display', false);
   }
 
 
