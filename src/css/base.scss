@@ -237,6 +237,18 @@ p {
   @extend .rooms-available-default-table;
 }
 
+#menu-data {
+  @extend .rooms-available-default-table;
+}
+
+.orders-table-main {
+  @extend .rooms-available-default-table;
+}
+
+.food-menu-table {
+  @extend .rooms-available-default-table;
+}
+
 .available-booking-date-default-btn {
   border-radius: 5px;
   border: 2px solid $secondary-color;
@@ -263,6 +275,10 @@ p {
   padding: 1px 15px;
 }
 
+.add-room-order-today-btn {
+  @extend .book-room-today-btn;
+}
+
 .cancel {
   @extend .book-room-today-btn;
   border-radius: 2px;
@@ -273,6 +289,10 @@ p {
   @extend .book-room-today-btn;
   border-radius: 2px;
   border: 1px solid $secondary-color;
+}
+
+.order-food {
+  @extend .book;
 }
 
 .order-date-default-btn {
