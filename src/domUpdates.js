@@ -98,6 +98,7 @@ const domUpdates =  {
   },
 
   prepOrderTableCustomerSelected() {
+    $('#table-order-customer-data').text('')
   },
 
   loadBookingsTable(hotel) {
@@ -224,10 +225,7 @@ const domUpdates =  {
 
   loadMenu(hotel) {
     let menuData = hotel.makeMenu();
-    console.log("menuData", menuData)
     let menuDataKeys = Object.keys(menuData);
-    console.log("menuDataKeys", menuDataKeys)
-
     $('.display-food-menu-order-today').show();
     const menuTableBody = $('#menu-data');
     let dataHtml = '';

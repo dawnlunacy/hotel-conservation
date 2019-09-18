@@ -1,4 +1,5 @@
 import Booking from "./Booking";
+import RoomService from "./RoomService"
 
 class Customer {
   constructor(name, id, bookings = [], roomServiceOrders = []) {
@@ -29,6 +30,14 @@ class Customer {
     let booking = new Booking(this.id, date, roomNumberInt);
     this.bookings.push(booking);
     return booking;
+  }
+
+  addFoodOrder(date, order, cost) {
+    let roomServiceOrder = new RoomService(this.id, date, order, cost);
+    console.log("roomServiceOrder", roomServiceOrder)
+    console.log("before", this.roomServiceOrders.length)
+    this.roomServiceOrders.push(roomServiceOrder)
+    console.log("after", this.roomServiceOrders.length)
   }
 
   

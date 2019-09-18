@@ -173,21 +173,23 @@ $(function() {
     domUpdates.loadCurrentBookingHistoryForCustomer(hotel);
     domUpdates.loadBookingsTable(hotel);
     domUpdates.appendMainTabDefault(hotel);
-
-    $('.add-room-order-today-btn').on('click', function(e) {
-      e.preventDefault();
-      domUpdates.loadMenu(hotel);
-      // $('display-food-menu-order-today').show();
-      console.log("INSIDE BTN");
-    })
-
-
-    
-
-
-  
-
   })
 
-});
+  $('.add-room-order-today-btn').on('click', function(e) {
+    e.preventDefault();
+    domUpdates.loadMenu(hotel);
+  })
 
+  $('#menu-data').on('click', '.order-food', function(e) {
+    e.preventDefault();
+    let date = hotel.findTodaysDate();
+    let foodItem = $(this)[0].classList[1];
+    let costConvert = parseFloat(($(this)[0].id));
+    let costRound = parseFloat(costConvert.toFixed(2))
+
+    hotel.currentCustomer.addFoodOrder(date, foodItem, costRound);
+    domUpdates.loadOrderTableCustomerSelected(hotel);
+    domUpdates.appendMainTabDefault(hotel);
+  });
+
+});
