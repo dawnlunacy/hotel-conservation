@@ -16,10 +16,10 @@
 1. *Note* You cannot close the terminal you are running the "server" in or the page will no longer be available to view. 
 
 ### Tech
-1.JavaScript
-2.Webpack
-3.Sass
-4.Mocha & Chai
+1.JavaScript <br>
+2.Webpack <br>
+3.Sass <br>
+4.Mocha & Chai <br>
 
 #### Goals
 1. This project uses jquery and no additional libraries or frameworks outside of mocha and chai
@@ -39,13 +39,13 @@
 
 ## Demo of Hotel Conservation Management Systems
 
-![HCMS Default Display Demo](https://github.com/dawnlunacy/hotel-conservation/blob/master/src/images/hotel-conservation-default-demo.mp4)
+[HCMS Default Display Demo](https://github.com/dawnlunacy/hotel-conservation/blob/master/src/images/hotel-conservation-default-demo.mp4)
 
-![HCMS Default Display Calendar Selection Demo](https://github.com/dawnlunacy/hotel-conservation/blob/master/src/images/hs-cs-default-calendars.mp4)
+[HCMS Default Display Calendar Selection Demo](https://github.com/dawnlunacy/hotel-conservation/blob/master/src/images/hs-cs-default-calendars.mp4)
 
-![HCMS Create Customer Demo](https://github.com/dawnlunacy/hotel-conservation/blob/master/src/images/hs-customer-creation.mp4)
+[HCMS Create Customer Demo](https://github.com/dawnlunacy/hotel-conservation/blob/master/src/images/hs-customer-creation.mp4)
 
-![HCMS Customer Bookings Demo](https://github.com/dawnlunacy/hotel-conservation/blob/master/src/images/hotel-conservation-cs-rooms.mp4)
+[HCMS Customer Bookings Demo](https://github.com/dawnlunacy/hotel-conservation/blob/master/src/images/hotel-conservation-cs-rooms.mp4)
 
 
 
