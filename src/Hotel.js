@@ -247,7 +247,6 @@ class Hotel {
       }
       return finalMenu
     }, {});
-    console.log("menu", menu)
     return menu;
   }
   

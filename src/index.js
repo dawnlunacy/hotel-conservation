@@ -104,6 +104,11 @@ $(function() {
     let name = $('.new-user-input').val();
     domUpdates.newCustomerEntered(hotel, name);
     domUpdates.appendDropDownList(hotel);
+    domUpdates.customerSelected(hotel, name);
+    domUpdates.loadOrderTableCustomerSelected(hotel);
+    domUpdates.loadCurrentBookingHistoryForCustomer(hotel);
+    domUpdates.loadPastBookingHistoryForCustomer(hotel);
+
   })
 
   $('#calendar').on('change', function() {
