@@ -44,4 +44,4 @@
 
 
 ## GitHub Pages
-[GitHub Pages](https://pages.github.com/) 
+[GitHub Pages](https://dawnlunacy.github.io/hotel-conservation/) 
