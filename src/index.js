@@ -156,7 +156,8 @@ $(function() {
     let roomNumber = $(this)[0].id;
     domUpdates.cancelCustomerBookings(hotel, date, roomNumber);
     domUpdates.loadCurrentBookingHistoryForCustomer(hotel);
-    // domUpdates.loadBookingsTable(hotel);
+    domUpdates.loadBookingsTable(hotel);
+    domUpdates.appendMainTabDefault(hotel);
   })
 
 
@@ -178,6 +179,9 @@ $(function() {
     domUpdates.addCustomerBookings(hotel, date, roomNumber);
     domUpdates.loadCurrentBookingHistoryForCustomer(hotel);
     domUpdates.loadBookingsTable(hotel);
+    domUpdates.appendMainTabDefault(hotel);
+    
+
 
   
 
