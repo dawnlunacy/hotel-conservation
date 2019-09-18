@@ -1,4 +1,4 @@
-import mockData from '../mock-data/mockData';
+
 import Room from '../src/Room';
 import chai from 'chai';
 import spies from 'chai-spies';
