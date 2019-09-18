@@ -46,8 +46,8 @@ $(function() {
 
     let $tabToHideId = '#' + $tabLabel.find('.tabs li.active').attr('rel') + '-default'
     let $tabToHideId2 = '#' + $tabLabel.find('.tabs li.active').attr('rel') + '-customer-selected'
-    $($tabToHideId).hide() 
-    $($tabToHideId2).hide()
+    $($tabToHideId).hide();
+    $($tabToHideId2).hide();
     
 
     $tabLabel.find('.tabs li.active').removeClass('active');
@@ -72,7 +72,7 @@ $(function() {
       } 
       if ($('.guide-display').text() !== ' Welcome Admin ' && $tabToShow === 'rooms') {
         let $tabToHideId = '#' + $tabLabel.find('.tabs li.active').attr('rel') + '-default'
-        $($tabToHideId).hide() 
+        $($tabToHideId).hide() ;
         let $tabToShowId = '#' + $tabToShow + '-customer-selected'
         $($tabToShowId).slideDown(200, function() {
           $(this).addClass('active');
@@ -80,7 +80,7 @@ $(function() {
       }
       if ($('.guide-display').text() !== ' Welcome Admin ' && $tabToShow === 'orders') {
         let $tabToHideId = '#' + $tabLabel.find('.tabs li.active').attr('rel') + '-default'
-        $($tabToHideId).hide() 
+        $($tabToHideId).hide();
         let $tabToShowId = '#' + $tabToShow + '-customer-selected'
         $($tabToShowId).slideDown(200, function() {
           $(this).addClass('active');
@@ -123,7 +123,7 @@ $(function() {
     let yyyy = date.getFullYear();
     let dateSelected = [yyyy, mm, dd].join('/');
     domUpdates.prepBookingsTableDefault(dateString);
-    domUpdates.loadAvailableRoomsTableDefault(hotel, dateSelected)
+    domUpdates.loadAvailableRoomsTableDefault(hotel, dateSelected);
     return dateSelected;
   })
 
@@ -137,7 +137,7 @@ $(function() {
     let yyyy = date.getFullYear();
     let dateSelected = [yyyy, mm, dd].join('/');
     domUpdates.prepOrderTableDefault(dateString);
-    domUpdates.loadOrderTableDefault(hotel, dateSelected)
+    domUpdates.loadOrderTableDefault(hotel, dateSelected);
     return dateSelected;
   })
 
@@ -154,13 +154,13 @@ $(function() {
 
   $('.book-room-today-btn').on('click', function(e) {
     e.preventDefault();
-    $('.select-room-by-type').show()
+    $('.select-room-by-type').show();
   })
 
   $('#room-type-select-dropdown').on('change', function(e) {
     e.preventDefault();
-    let roomType = $('#room-type-select-dropdown option:selected').val()
-    domUpdates.loadAvailableRoomsFilteredForCustomer(hotel, roomType)
+    let roomType = $('#room-type-select-dropdown option:selected').val();
+    domUpdates.loadAvailableRoomsFilteredForCustomer(hotel, roomType);
   })
 
   $('#rooms-available-filter-data').on('click', '.book', function(e) {

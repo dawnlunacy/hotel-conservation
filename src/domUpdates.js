@@ -14,7 +14,7 @@ const domUpdates =  {
     
   appendDropDownList(hotel) {
     $('#customer-select-dropdown').empty()
-    let alphabeticalCustomers = hotel.customers.sort((a, b) => a.name.localeCompare(b.name))
+    let alphabeticalCustomers = hotel.customers.sort((a, b) => a.name.localeCompare(b.name));
     alphabeticalCustomers.forEach((customer) => {
       let option = document.createElement('option');
       option.val = customer.id;
@@ -37,20 +37,20 @@ const domUpdates =  {
   },
 
   appendMostPopularDate(hotel) {
-    let dateData = hotel.findMostPopularBookingDate()
+    let dateData = hotel.findMostPopularBookingDate();
     if (dateData.length === 1) {
-      $('.most-popular-booking-date').text(dateData)
+      $('.most-popular-booking-date').text(dateData);
     } else {
-      dateData.forEach(date => $('.most-popular-booking-date').append(`<li>${date}</li>`))  
+      dateData.forEach(date => $('.most-popular-booking-date').append(`<li>${date}</li>`));
     }
   },
 
   appendMostAvailableRoomsDate(hotel) {
-    let dateData = hotel.findDateWithMostRoomsAvailable()
+    let dateData = hotel.findDateWithMostRoomsAvailable();
     if (dateData.length === 1) {
-      $('.greatest-availability-date').text(dateData)
+      $('.greatest-availability-date').text(dateData);
     } else {
-      dateData.forEach(date => $('.greatest-availability-date').append(`<li>${date}</li>`))  
+      dateData.forEach(date => $('.greatest-availability-date').append(`<li>${date}</li>`));
     }
   },
 
@@ -75,7 +75,7 @@ const domUpdates =  {
       let customer = hotel.findCustomerById(order.userID)
       dataHtml += `<tr><td>${order.userID}</td><td>${customer.name}</td><td>${order.food}</td><td> $${order.totalCost}</td></tr>`
     })
-    orderTableBody.append(dataHtml)
+    orderTableBody.append(dataHtml);
   },
 
   loadOrderTableCustomerSelected(hotel) {
@@ -93,12 +93,11 @@ const domUpdates =  {
 
   prepOrderTableDefault(date) {
     $('.todays-room-service-orders').text(' ');
-    $('#table-order-data').text('')
-    $('.order-default-date').text(date)
+    $('#table-order-data').text('');
+    $('.order-default-date').text(date);
   },
 
-  prepOrderTableCustomerSelected() {
-    $('#table-order-customer-data').text('')
+  prepOrderTableCustomerSelected() {;
   },
 
   loadBookingsTable(hotel) {
@@ -108,7 +107,7 @@ const domUpdates =  {
     const bookingTableBody = $('#bookings-default-table-data');
     let dataHtml = '';
     bookingData.forEach((booking) => {
-      let customer = hotel.findCustomerById(booking.userID)
+      let customer = hotel.findCustomerById(booking.userID);
       let costOfRoom = hotel.findCostOfRoom(booking.roomNumber);
       dataHtml += `<tr><td>${booking.userID}</td><td>${customer.name}</td><td> ${booking.roomNumber}</td><td> $${costOfRoom}</td>`
     })
@@ -123,7 +122,7 @@ const domUpdates =  {
   prepBookingsTableDefault(date) {
     $('.todays-bookings-details').text(' ');
     $('#rooms-available-data').text('');
-    $('.rooms-available-default-date').text(date)
+    $('.rooms-available-default-date').text(date);
   },
 
   loadAvailableRoomsTableDefault(hotel, date = hotel.findTodaysDate()) {
@@ -179,26 +178,26 @@ const domUpdates =  {
 
   setDefaultValueForCalendars() {
     let dateControls = document.querySelectorAll('input[type="date"]');
-    let today = new Date().toISOString().slice(0, 10)
+    let today = new Date().toISOString().slice(0, 10);
     dateControls.forEach(control => control.value = today);
   },
 
   displayDateFormat() {
-    let date = new Date()
+    let date = new Date();
     let formatDate = date.toString().split(' ').slice(0, 4).join(' ');
     $('.todays-date').text(formatDate);
 
   },
 
   cancelCustomerBookings(hotel, date, roomNumber) {
-    let bookingToCancel = hotel.currentCustomer.cancelBooking(date, roomNumber)
-    hotel.removeBooking(bookingToCancel)
+    let bookingToCancel = hotel.currentCustomer.cancelBooking(date, roomNumber);
+    hotel.removeBooking(bookingToCancel);
   },
 
   loadAvailableRoomsFilteredForCustomer(hotel, roomType, date = hotel.findTodaysDate()) {
     this.prepAvailableRoomFilteredTable();
     let availableRoomData = hotel.findActualAvailableRoomsByType(roomType, date);
-    $('.display-filtered-room-available-today').show()
+    $('.display-filtered-room-available-today').show();
     $('.rooms-available-filter-date').text(date);
     $('.total-rooms-available-filter').text(availableRoomData.length);
     const availableRoomsTableBody = $('#rooms-available-filter-data');
@@ -210,7 +209,7 @@ const domUpdates =  {
   },
 
   prepAvailableRoomFilteredTable() {
-    $('#rooms-available-filter-data').text('')
+    $('#rooms-available-filter-data').text('');
     $('.display-filtered-room-available-today').hide();
   },
 
