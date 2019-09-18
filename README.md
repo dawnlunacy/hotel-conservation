@@ -31,6 +31,12 @@
 
 ## ScreenShots
 
+<img src="https://github.com/dawnlunacy/hotel-conservation/blob/master/src/images/rooms-default.png" width="400" height="790"> 
+
+<img src="https://github.com/dawnlunacy/hotel-conservation/blob/master/src/images/rooms-cs.png" width="400" height="790"> 
+
+<img src="https://github.com/dawnlunacy/hotel-conservation/blob/master/src/images/main-screenshot.png" width="400" height="790"> 
+
 ## Demo of Hotel Conservation Management Systems
 
 ![HCMS Default Display Demo](https://github.com/dawnlunacy/hotel-conservation/blob/master/src/images/hotel-conservation-default-demo.mp4)
